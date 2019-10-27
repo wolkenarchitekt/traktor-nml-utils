@@ -1,0 +1,32 @@
+# Misc
+*.swp
+**/.idea/*
+.DS_Store
+*.log
+music/
+services/tracks-api/.ipython/
+services/tracks-api/.bash_history
+
+# Python
+*.egg-info
+.pytest_cache
+*.pyc
+.venv
+
+# Node
+node_modules/
+
+# DB
+services/tracks-api/db/
+
+# Fixtures
+services/tracks-api/tests/fixtures/images/
+services/puppeteer/tests/screenshots/
+services/web/frontend/build/
+services/tracks-api/media/
+
+# Settings
+.env
+
+# Databases
+*.sqlite*
