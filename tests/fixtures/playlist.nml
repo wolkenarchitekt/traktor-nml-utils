@@ -1,0 +1,17 @@
+<NML VERSION="19">
+  <HEAD COMPANY="www.native-instruments.com" PROGRAM="Traktor"/>
+  <MUSICFOLDERS/>
+  <PLAYLISTS>
+    <NODE TYPE="FOLDER" NAME="$ROOT">
+      <SUBNODES COUNT="1">
+        <NODE TYPE="PLAYLIST" NAME="Preparation">
+          <PLAYLIST ENTRIES="212" TYPE="LIST" UUID="f80b2bdebbb843eb897c1ae90af896f5">
+            <ENTRY>
+              <PRIMARYKEY TYPE="TRACK" KEY="osx/:Users/:johndoe/:Music/:pechundschwefel/:549043_The_Sky_Was_Pink_Icelandic_Version.mp3"/>
+            </ENTRY>
+          </PLAYLIST>
+        </NODE>
+      </SUBNODES>
+    </NODE>
+  </PLAYLISTS>
+</NML>
