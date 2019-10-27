@@ -62,8 +62,6 @@ class TraktorCollection:
             # /PLAYLISTS/NODE[@TYPE='FOLDER']/SUBNODES/NODE[@TYPE='PLAYLIST'][@NAME='Auto-Cued Tracks']/PLAYLIST/ENTRY
             self._playlist_entries = self.xml_tree.findall(
                 "/PLAYLISTS/NODE[@TYPE='FOLDER']/SUBNODES/NODE[@TYPE='PLAYLIST'][@NAME='HISTORY']/PLAYLIST/ENTRY")
-            from ipdb import set_trace
-            set_trace()
 
         return self._playlist_entries
 
