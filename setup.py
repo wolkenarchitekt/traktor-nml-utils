@@ -11,4 +11,7 @@ setup(
     packages=find_packages(exclude=('tests', 'docs')),
     zip_safe=True,
     python_requires='>=3.7.0',
+    install_requires=[
+        'lxml',
+    ]
 )
