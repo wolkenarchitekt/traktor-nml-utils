@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='traktor-nml-utils',
-    version='1.0.0',
+    version='1.0.1',
     description='Utilities to read and write Traktor NML files',
     long_description=open('README').read(),
     url='http://github.com/ifischer/traktor-nml-utils',
