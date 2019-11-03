@@ -60,9 +60,6 @@ class XMLdataclass:
         with open(self.xmlfile, 'wb') as f:
             f.write(tostring(self.xmltree.getroottree(), encoding='utf8'))
 
-    def __str__(self):
-        return tostring(self.xmltree).decode()
-
 
 @dataclass(init=False)
 class Playlist(XMLdataclass):
