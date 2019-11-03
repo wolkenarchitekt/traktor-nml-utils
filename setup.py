@@ -4,6 +4,7 @@ setup(
     name='traktor-nml-utils',
     version='1.0.0',
     description='Utilities to read and write Traktor NML files',
+    long_description=open('README.md').read(),
     url='http://github.com/ifischer/traktor-nml-utils',
     author='Ingo Fischer',
     author_email='mail@ingofischer.de',
@@ -13,5 +14,5 @@ setup(
     python_requires='>=3.7.0',
     install_requires=[
         'lxml',
-    ]
+    ],
 )
