@@ -14,13 +14,13 @@ Because traktor-nml-utils uses `dataclasses`, you need at least Python 3.7.x.
 
 ## Installation
 
-```
+```shell
 pip install --user git+ssh://git@github.com/ifischer/traktor-nml-utils.git@1.0.0
 ```
 
 ## Usage
 
-```
+```python
 from traktor_nml_utils import TraktorCollection
 
 collection = TraktorCollection('collection.nml')
@@ -39,7 +39,7 @@ for playlist in collection.playlists:
 
 Run tests within Docker container:
 
-```
+```shell
 make build test
 ```
 
@@ -47,7 +47,7 @@ make build test
 
 ### Get artist, title and rating of all collection entries
 
-```
+```python
 from traktor_nml_utils import TraktorCollection
 
 collection = TraktorCollection('collection.nml')
