@@ -1,5 +1,7 @@
 # Traktor NML utils
 
+[![Build Status](https://travis-ci.com/ifischer/traktor-nml-utils.svg?branch=master)](https://travis-ci.com/ifischer/traktor-nml-utils)
+
 This module contains utilities to parse and modify Native Instruments Traktor NML files.
 It was created to be the by far best available library to handle Traktor collections.  
 
@@ -55,4 +57,3 @@ collection = TraktorCollection('collection.nml')
 for entry in collection.entries:
     print(f'{entry.artist} - {entry.title} ({entry.ranking}')
 ```
-
