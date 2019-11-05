@@ -1,10 +1,17 @@
-from setuptools import setup, find_packages
+import os
+
+from setuptools import find_packages, setup
+
+
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+
 
 setup(
     name='traktor-nml-utils',
     version='1.0.1',
     description='Utilities to read and write Traktor NML files',
-    long_description=open('README').read(),
+    long_description=read('README'),
     url='http://github.com/ifischer/traktor-nml-utils',
     author='Ingo Fischer',
     author_email='mail@ingofischer.de',
