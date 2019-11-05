@@ -21,6 +21,3 @@ RUN pip install -r requirements-dev.txt
 COPY . .
 
 RUN pip install .
-
-
-CMD ["python3"]

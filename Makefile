@@ -1,8 +1,6 @@
-.DEFAULT_GOAL := help
-VIRTUALENV_DIR = .venv
 CONTAINER  = traktor-nml-utils
 
-build:  ## Build Docker container
+build:
 	docker build -t $(CONTAINER) .
 
 clean:
