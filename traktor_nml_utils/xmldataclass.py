@@ -1,12 +1,14 @@
-from lxml.etree import tostring
+from lxml.etree import tostring, Element
 
 
 class XMLdataclass:
-    def __init__(self, xmltree, xmlfile):
+    """Use dataclass fields to wrap XML elements with getters and setters"""
+    def __init__(self, xmltree: Element, xmlfile: str):
         self.xmltree = xmltree
         self.xmlfile = xmlfile
 
     def __getattribute__(self, attribute):
+        """Retrieve XML via dataclass field metadata attribute"""
         if attribute.startswith('__') or attribute not in self.__dataclass_fields__.keys():
             return super().__getattribute__(attribute)
 
@@ -18,6 +20,7 @@ class XMLdataclass:
             return field_type(result[0])
 
     def __setattr__(self, attribute, value):
+        """Set XML via dataclass field metadata attribute"""
         if attribute.startswith('__') or attribute not in self.__dataclass_fields__.keys():
             return super().__setattr__(attribute, value)
 
