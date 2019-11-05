@@ -75,7 +75,3 @@ def test_history(nml_file):
     assert history_entry.starttime == 68839
     assert history_entry.filename == \
         'Transcend/:DJing/:beatport_steve/:09 Change (Like Mix Extended Instrumental).mp3'
-
-
-def test_travis():
-    assert False
