@@ -3,9 +3,8 @@
 **/.idea/*
 .DS_Store
 *.log
-music/
-services/tracks-api/.ipython/
-services/tracks-api/.bash_history
+dist/
+build/
 
 # Python
 *.egg-info
@@ -14,20 +13,3 @@ services/tracks-api/.bash_history
 .venv
 .mypy_cache
 
-# Node
-node_modules/
-
-# DB
-services/tracks-api/db/
-
-# Fixtures
-services/tracks-api/tests/fixtures/images/
-services/puppeteer/tests/screenshots/
-services/web/frontend/build/
-services/tracks-api/media/
-
-# Settings
-.env
-
-# Databases
-*.sqlite*
