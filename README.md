@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/ifischer/traktor-nml-utils.svg?branch=master)](https://travis-ci.com/ifischer/traktor-nml-utils)
 
 This module contains utilities to parse and modify Native Instruments Traktor NML files.
-It was created to be the by far best available library to handle Traktor collections.  
+It was created to be(come) the by far best available library to handle Traktor collection data.  
 
 It can parse collection files (`$TRAKTOR_DIR/collection.nml`) and history 
 files (`$TRAKTOR_DIR/History/history_$DATE.nml`).
