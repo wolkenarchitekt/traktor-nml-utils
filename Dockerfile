@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED="true"
 WORKDIR /app
 
 RUN apt-get update \
-  && apt-get install -y build-essential python3-lxml --no-install-recommends \
+  && apt-get install -y build-essential python3-lxml pandoc --no-install-recommends \
   && pip install lxml==4.4.1 \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /usr/share/doc && rm -rf /usr/share/man \

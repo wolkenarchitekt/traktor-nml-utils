@@ -1,6 +1,7 @@
 CONTAINER  = traktor-nml-utils
 HOST_UID = $(shell id -u)
 HOST_GID = $(shell id -g)
+DOCKER_CMD = docker run --user $(UID):$(GID) -v $(PWD):/app -it --rm $(CONTAINER)
 
 build:
 	docker build -t $(CONTAINER) .
@@ -22,5 +23,6 @@ mypy:
 	docker run -it --rm $(CONTAINER) pytest --mypy
 
 publish:
-	docker run --user $(UID):$(GID) -v $(PWD)/dist:/app/dist -it --rm $(CONTAINER) python setup.py sdist
-	docker run --user $(UID):$(GID) -v $(PWD)/dist:/app/dist -it --rm $(CONTAINER) twine upload dist/*
+	$(DOCKER_CMD) pandoc --from=markdown --to=rst --output=README README.md
+	$(DOCKER_CMD) python setup.py sdist
+	$(DOCKER_CMD) twine upload dist/*
