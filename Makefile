@@ -24,4 +24,3 @@ mypy:
 publish:
 	docker run --user $(UID):$(GID) -v $(PWD)/dist:/app/dist -it --rm $(CONTAINER) python setup.py sdist
 	docker run --user $(UID):$(GID) -v $(PWD)/dist:/app/dist -it --rm $(CONTAINER) twine upload dist/*
-
