@@ -1,4 +1,6 @@
 CONTAINER  = traktor-nml-utils
+HOST_UID = $(shell id -u)
+HOST_GID = $(shell id -g)
 
 build:
 	docker build -t $(CONTAINER) .
@@ -18,3 +20,8 @@ lint:
 
 mypy:
 	docker run -it --rm $(CONTAINER) pytest --mypy
+
+publish:
+	docker run --user $(UID):$(GID) -v $(PWD)/dist:/app/dist -it --rm $(CONTAINER) python setup.py sdist
+	docker run --user $(UID):$(GID) -v $(PWD)/dist:/app/dist -it --rm $(CONTAINER) twine upload dist/*
+
