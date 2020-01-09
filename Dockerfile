@@ -18,6 +18,7 @@ COPY requirements-dev.txt .
 RUN pip install -r requirements.txt
 RUN pip install -r requirements-dev.txt
 
+COPY pip.conf /root/.config/pip/pip.conf
 COPY . .
 
 RUN pip install .
