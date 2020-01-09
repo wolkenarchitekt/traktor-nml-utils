@@ -21,5 +21,10 @@ setup(
     python_requires='>=3.7.0',
     install_requires=[
         'lxml',
+        'Click',
     ],
+    entry_points='''
+        [console_scripts]
+        traktor_nml_utils=traktor_nml_utils:cli.cli
+    ''',
 )
