@@ -1,9 +1,19 @@
+from os.path import isfile
+from pathlib import Path
 import logging
+import os
 
 import click
 from traktor_nml_utils import TraktorCollection
 
 logger = logging.getLogger(__name__)
+
+
+def get_nml_files(directory):
+    return [
+        Path(file) for file in os.scandir(directory) if
+        isfile(file) and file.name.endswith('.nml')
+    ]
 
 
 @click.group()
@@ -20,11 +30,17 @@ def cli(verbose, debug):
 
 @cli.command()
 @click.option('--nml-file', help="NML file to import")
-def traktor_import(nml_file):
+def traktor_import_file(nml_file):
     collection = TraktorCollection(nml_file)
-    for history_entry in collection.history:
-        from pdb import set_trace; set_trace()
-        print(history_entry)
+
+
+@cli.command()
+@click.option('--nml-dir', help="NML dir to import recursively")
+def traktor_import_dir(nml_dir):
+    for nml_file in get_nml_files(nml_dir):
+        collection = TraktorCollection(str(nml_file))
+        for entry in collection.entries:
+            print(entry.artist)
 
 
 if __name__ == '__main__':
