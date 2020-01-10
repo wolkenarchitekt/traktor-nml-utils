@@ -1,7 +1,8 @@
 CONTAINER  = traktor-nml-utils
 HOST_UID = $(shell id -u)
 HOST_GID = $(shell id -g)
-DOCKER_CMD = docker run --user $(UID):$(GID) -v $(PWD):/app -it --rm $(CONTAINER)
+NML_DIR = /home/ifischer/traktor3/History
+DOCKER_CMD = docker run --user $(UID):$(GID) -v $(PWD):/app -v $(NML_DIR):/traktor:ro -it --rm $(CONTAINER)
 VIRTUALENV_DIR = .venv
 
 build:
@@ -14,16 +15,19 @@ clean:
 	-docker rm $(CONTAINER)
 
 shell:
-	docker run -it --rm $(CONTAINER) bash
+	$(DOCKER_CMD) bash
 
 test:
-	docker run -it --rm $(CONTAINER) pytest
+	$(DOCKER_CMD) pytest
 
 lint:
-	docker run -it --rm $(CONTAINER) flake8
+	$(DOCKER_CMD) flake8
 
 mypy:
-	docker run -it --rm $(CONTAINER) pytest --mypy
+	$(DOCKER_CMD) pytest --mypy
+
+test-import:
+	$(DOCKER_CMD) traktor_nml_utils traktor-import-dir --nml-dir /traktor
 
 publish:
 	$(DOCKER_CMD) pandoc --from=markdown --to=rst --output=README README.md
