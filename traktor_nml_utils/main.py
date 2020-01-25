@@ -63,6 +63,7 @@ class HistoryEntry(XMLdataclass):
 @dataclass(init=False)
 class CollectionEntry(XMLdataclass):
     artist: str = field(metadata={'xpath': '@ARTIST'})
+    album: str = field(metadata={'xpath': 'ALBUM/@TITLE'})
     audio_id: str = field(metadata={'xpath': '@AUDIO_ID'}, repr=False)
     bitrate: int = field(metadata={'xpath': 'INFO/@BITRATE'})
     bpm: float = field(metadata={'xpath': 'TEMPO/@BPM'})
