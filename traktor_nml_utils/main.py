@@ -67,6 +67,7 @@ class CollectionEntry(XMLdataclass):
     audio_id: str = field(metadata={'xpath': '@AUDIO_ID'}, repr=False)
     bitrate: int = field(metadata={'xpath': 'INFO/@BITRATE'})
     bpm: float = field(metadata={'xpath': 'TEMPO/@BPM'})
+    key: float = field(metadata={'xpath': 'INFO/@KEY'})
     comment: str = field(metadata={'xpath': 'INFO/@COMMENT'})
     comment2: str = field(metadata={'xpath': 'INFO/@RATING'})
     dir: str = field(metadata={'xpath': 'LOCATION/@DIR'})
