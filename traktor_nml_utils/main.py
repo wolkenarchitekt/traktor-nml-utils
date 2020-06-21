@@ -7,13 +7,13 @@ from traktor_nml_utils.xmldataclass import XMLdataclass
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-PLAYLIST_XPATH = "/PLAYLISTS/NODE[@TYPE='FOLDER']/SUBNODES/NODE[@TYPE='PLAYLIST']"
+PLAYLIST_ROOT_XPATH = "/PLAYLISTS/NODE[@TYPE='FOLDER'][@NAME='$ROOT']"
+FOLDER_XPATH = "./SUBNODES/NODE[@TYPE='FOLDER']"
+PLAYLIST_XPATH = "./SUBNODES/NODE[@TYPE='PLAYLIST']"
 ENTRY_XPATH = "/COLLECTION/ENTRY"
 
 PLAYLIST_ENTRY_XPATH = (
-    "/PLAYLISTS/NODE[@TYPE='FOLDER']"
-    "/SUBNODES/NODE[@TYPE='PLAYLIST'][not(@NAME='HISTORY')]"
-    "/PLAYLIST/ENTRY"
+    "./ENTRY"
 )
 
 HISTORY_XPATH = (
@@ -25,7 +25,12 @@ HISTORY_XPATH = (
 
 @dataclass(init=False)
 class Playlist(XMLdataclass):
-    name: str = field(metadata={'xpath': '@NAME'})
+    def __init__(self, xmltree: etree.Element, xmlfile: str, name: str):
+        super().__init__(xmltree, xmlfile)
+        self.name = name
+
+    def __repr__(self):
+        return f"Playlist({self.name})"
 
     @property
     def entries(self):
@@ -106,7 +111,30 @@ class TraktorCollection:
 
         self.entries = [
             CollectionEntry(entry, path) for entry in self.xml_tree.findall(ENTRY_XPATH)]
-        self.playlists = [
-            Playlist(entry, path) for entry in self.xml_tree.findall(PLAYLIST_XPATH)]
+        self.playlists = self._get_playlists()
         self.history = [
             HistoryEntry(entry, path) for entry in self.xml_tree.findall(HISTORY_XPATH)]
+    
+    def _get_playlists(self, parent=None, prefix=None):
+        #import pdb; pdb.set_trace()
+        playlists = []
+        if parent is None:
+            parent = self.xml_tree.find(PLAYLIST_ROOT_XPATH)
+            if parent is None:
+                return playlists
+        if prefix is None:
+            prefix = parent.xpath("@NAME")[0]
+            if prefix == "$ROOT":
+                prefix = None
+        else:
+            prefix = "/".join((prefix, parent.xpath("@NAME")[0]))
+        for playlist in parent.findall(PLAYLIST_XPATH):
+            name_parts = []
+            if prefix is not None:
+                name_parts.append(prefix) 
+            name_parts.append(playlist.xpath("@NAME")[0])
+            playlists.append(Playlist(playlist, self.path, "/".join(name_parts)))
+        for folder in parent.findall(FOLDER_XPATH):
+            playlists.extend(self._get_playlists(folder, prefix))
+        return playlists
+
