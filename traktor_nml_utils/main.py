@@ -1,11 +1,11 @@
 import datetime
 import os
 from dataclasses import dataclass, field
-
+from typing import List
 from lxml import etree
 from traktor_nml_utils.xmldataclass import XMLdataclass
-
 dir_path = os.path.dirname(os.path.realpath(__file__))
+from lxml.etree import ElementTree
 
 PLAYLIST_XPATH = "/PLAYLISTS/NODE[@TYPE='FOLDER']/SUBNODES/NODE[@TYPE='PLAYLIST']"
 ENTRY_XPATH = "/COLLECTION/ENTRY"
@@ -87,6 +87,12 @@ class CollectionEntry(XMLdataclass):
     @property
     def cuepoints(self):
         return [CuePoint(cuepoint, self.xmlfile) for cuepoint in self.xmltree.findall('CUE_V2')]
+
+    @cuepoints.setter
+    def cuepoints(self, cuepoints: List["CuePoint"]):
+        for cuepoint in cuepoints:
+            from ipdb import set_trace; set_trace()
+            self.xmltree.append(ElementTree)
 
 
 @dataclass(init=False)

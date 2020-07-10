@@ -2,7 +2,7 @@ from shutil import copy2 as copy
 import pytest
 import os
 
-from traktor_nml_utils import TraktorCollection
+from traktor_nml_utils import TraktorCollection, CuePoint
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -43,6 +43,20 @@ def test_update(nml_file, tmpdir):
     entry.volume = 'blablu'
     entry.save()
     assert 'blablu' in open(nml_file).read()
+
+
+@pytest.mark.parametrize("nml_file", [
+    os.path.join(dir_path, 'fixtures', 'collection.nml')
+])
+def test_update_cuepoint(nml_file, tmpdir):
+    nml_file = copy(os.path.join(dir_path, 'fixtures', 'collection.nml'), tmpdir)
+    collection = TraktorCollection(nml_file)
+
+    entry = collection.entries[0]
+    entry.cuepoints = [CuePoint(entry.xml_tree, nml_file)]
+    entry.save()
+    collection = TraktorCollection(nml_file)
+    # assert collection.entries[0].cuepoints == cuepoints
 
 
 @pytest.mark.parametrize("nml_file", [
