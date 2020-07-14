@@ -1,20 +1,32 @@
 CONTAINER  = traktor-nml-utils
+VIRTUALENV_DIR = .venv
 
-build:
+docker-build:
 	docker build -t $(CONTAINER) .
 
-clean:
+docker-clean:
 	-docker stop $(CONTAINER)
 	-docker rm $(CONTAINER)
 
-shell:
+docker-shell:
 	docker run -it --rm $(CONTAINER) bash
 
-test:
-	docker run -it --rm $(CONTAINER) pytest
+docker-test:
+	docker run -it --rm $(CONTAINER) pytest -s -v tests/test_parser.py::test_get_cuepoints
 
-lint:
+docker-lint:
 	docker run -it --rm $(CONTAINER) flake8
 
-mypy:
+docker-mypy:
 	docker run -it --rm $(CONTAINER) pytest --mypy
+
+virtualenv-build:
+	python3.7 -m venv $(VIRTUALENV_DIR)
+	. $(VIRTUALENV_DIR)/bin/activate && \
+		pip install -r requirements.txt && \
+		pip install -r requirements-dev.txt && \
+		pip install -e .
+
+virtualenv-test:
+	. $(VIRTUALENV_DIR)/bin/activate && \
+		pytest -s -v tests/test_parser.py::test_get_cuepoints

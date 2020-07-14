@@ -61,6 +61,16 @@ class HistoryEntry(XMLdataclass):
 
 
 @dataclass(init=False)
+class CuePoint(XMLdataclass):
+    name: str = field(metadata={'xpath': '@NAME'})
+    cuepoint_type: int = field(metadata={'xpath': '@TYPE'})
+    start: float = field(metadata={'xpath': '@START'})
+    length: float = field(metadata={'xpath': '@LEN'})
+    repeats: int = field(metadata={'xpath': '@REPEATS'})
+    hotcue: int = field(metadata={'xpath': '@HOTCUE'})
+
+
+@dataclass(init=False)
 class CollectionEntry(XMLdataclass):
     artist: str = field(metadata={'xpath': '@ARTIST'})
     album: str = field(metadata={'xpath': 'ALBUM/@TITLE'})
@@ -80,29 +90,10 @@ class CollectionEntry(XMLdataclass):
     ranking: int = field(metadata={'xpath': 'INFO/@RANKING'})
     title: str = field(metadata={'xpath': '@TITLE'})
     import_date: str = field(metadata={'xpath': 'INFO/@IMPORT_DATE'})
-    release_date: str = field(metadata={'xpath': 'INFO@RELEASE_DATE'})
+    release_date: str = field(metadata={'xpath': 'INFO/@RELEASE_DATE'})
     last_played: str = field(metadata={'xpath': 'INFO/@LAST_PLAYED'})
     volume: str = field(metadata={'xpath': 'LOCATION/@VOLUME'})
-
-    @property
-    def cuepoints(self):
-        return [CuePoint(cuepoint, self.xmlfile) for cuepoint in self.xmltree.findall('CUE_V2')]
-
-    @cuepoints.setter
-    def cuepoints(self, cuepoints: List["CuePoint"]):
-        for cuepoint in cuepoints:
-            from ipdb import set_trace; set_trace()
-            self.xmltree.append(ElementTree)
-
-
-@dataclass(init=False)
-class CuePoint(XMLdataclass):
-    name: str = field(metadata={'xpath': '@NAME'})
-    cuepoint_type: int = field(metadata={'xpath': '@TYPE'})
-    start: float = field(metadata={'xpath': '@START'})
-    length: float = field(metadata={'xpath': '@LEN'})
-    repeats: int = field(metadata={'xpath': '@REPEATS'})
-    hotcue: int = field(metadata={'xpath': '@HOTCUE'})
+    cuepoints: List[CuePoint] = field(metadata={'xpath': "CUE_V2"}, default_factory=list)
 
 
 class TraktorCollection:

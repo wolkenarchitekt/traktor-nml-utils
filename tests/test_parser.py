@@ -51,18 +51,26 @@ def test_update(nml_file, tmpdir):
 def test_update_cuepoint(nml_file, tmpdir):
     nml_file = copy(os.path.join(dir_path, 'fixtures', 'collection.nml'), tmpdir)
     collection = TraktorCollection(nml_file)
-
     entry = collection.entries[0]
-    entry.cuepoints = [CuePoint(entry.xml_tree, nml_file)]
-    entry.save()
-    collection = TraktorCollection(nml_file)
-    # assert collection.entries[0].cuepoints == cuepoints
+    cuepoint = CuePoint()
+    cuepoint.name = "foobar"
+    cuepoint.cuepoint_type = "asdf"
+    cuepoint.start = "asdf"
+    cuepoint.length = "asdf"
+    cuepoint.repeats = "asdf"
+    cuepoint.hotcue = "asdf"
+    print(cuepoint)
+    # from ipdb import set_trace; set_trace()
+    # entry.cuepoints = [CuePoint()]
+    # entry.save()
+    # collection = TraktorCollection(nml_file)
+    # # assert collection.entries[0].cuepoints == cuepoints
 
 
 @pytest.mark.parametrize("nml_file", [
     os.path.join(dir_path, 'fixtures', 'cuepoints.nml')
 ])
-def test_cuepoints(nml_file):
+def test_get_cuepoints(nml_file):
     collection = TraktorCollection(nml_file)
     entry = collection.entries[0]
     assert len(entry.cuepoints) == 3
