@@ -1,23 +1,25 @@
+from dataclasses import dataclass
 from typing import List
 
 from lxml.etree import tostring, Element
 
 
+# TODO: check alternative implementation: https://github.com/theatlantic/django-xml/blob/master/djxml/xmlmodels/base.py
+
 class XMLdataclass:
     """Use dataclass fields to wrap XML elements with getters and setters"""
-    def __init__(self, xmltree: Element = None, xmlfile: str = None):
-        self.xmltree = xmltree
-        self.xmlfile = xmlfile
-
     def __getattribute__(self, attribute):
         """Retrieve XML via dataclass field metadata attribute"""
         if attribute.startswith('__') \
-                or attribute not in self.__dataclass_fields__.keys() \
-                or not self.xmltree:
+                or attribute not in self.__dataclass_fields__.keys():
             return super().__getattribute__(attribute)
 
         dc_field = self.__dataclass_fields__[attribute]
         field_type = dc_field.type
+
+        if 'xpath' not in dc_field.metadata:
+            return super().__getattribute__(attribute)
+
         xpath = dc_field.metadata['xpath']
 
         # Bare instance
@@ -38,12 +40,14 @@ class XMLdataclass:
         """Set XML via dataclass field metadata attribute"""
         if attribute.startswith('__') \
                 or attribute not in self.__dataclass_fields__.keys()\
-                or not self.xmltree:
+                or not getattr(self, 'xmltree', None):
             return super().__setattr__(attribute, value)
 
         dc_field = self.__dataclass_fields__[attribute]
         field_type = dc_field.type
 
+        if 'xpath' not in dc_field.metadata:
+            return super().__setattr__(attribute, value)
         xpath = dc_field.metadata['xpath']
         xpath_attrib = xpath.split('/')[-1]
         root = self.xmltree
