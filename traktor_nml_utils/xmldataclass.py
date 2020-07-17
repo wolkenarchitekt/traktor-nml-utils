@@ -6,7 +6,18 @@ from lxml.etree import tostring, Element
 
 # TODO: check alternative implementation: https://github.com/theatlantic/django-xml/blob/master/djxml/xmlmodels/base.py
 
+@dataclass
 class XMLdataclass:
+    xmlfile: str = ""
+    xmltree: str = ""
+
+    def from_xml(self, xmlfile, xmltree):
+        pass
+
+    def to_xml(self, xmlfile, xmltree):
+        for field in self.__dataclass_fields__.keys():
+            print(field)
+
     """Use dataclass fields to wrap XML elements with getters and setters"""
     def __getattribute__(self, attribute):
         """Retrieve XML via dataclass field metadata attribute"""
