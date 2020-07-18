@@ -1,0 +1,32 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>my-app</artifactId>
+  <version>1</version>
+
+	<build>
+    <plugins>
+      <plugin>
+        <groupId>net.sigmalab.trang</groupId>
+        <artifactId>trang-maven-plugin</artifactId>
+        <version>1.2</version>
+        <executions>
+          <execution>
+            <id>trang-convert</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>trang</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <inputFiles>
+            <inputFile>collection.xml</inputFile>
+          </inputFiles>
+          <outputFileName>collection.xsd</outputFileName>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

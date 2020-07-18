@@ -30,3 +30,8 @@ virtualenv-build:
 virtualenv-test:
 	. $(VIRTUALENV_DIR)/bin/activate && \
 		pytest -s -v tests/test_parser.py::test_get_cuepoints
+
+
+generate-models:
+	docker build -t trang -f ./xml_schema_gen/Dockerfile ./xml_schema_gen
+	docker run --rm -v $(PWD):/opt/workspace trang
