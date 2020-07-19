@@ -28,3 +28,5 @@ XML = """<NML VERSION="19">
 def test_xsdata():
     obj = parser.from_string(XML, Nml)
     assert obj.playlists.node.subnodes.node[0].playlist.entry[0].primarykey.key == "osx/:Users/:johndoe/:Music/:pechundschwefel/:549043_The_Sky_Was_Pink_Icelandic_Version.mp3"
+    obj.playlists.node.subnodes.node[0].playlist.entry[0].primarykey.key = "foobar"
+    print(XmlSerializer(pretty_print=True).render(obj))
