@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="NML">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="HEAD"/>
+        <xs:element ref="MUSICFOLDERS"/>
+        <xs:element ref="COLLECTION"/>
+        <xs:element ref="SETS"/>
+        <xs:element ref="PLAYLISTS"/>
+      </xs:sequence>
+      <xs:attribute name="VERSION" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HEAD">
+    <xs:complexType>
+      <xs:attribute name="COMPANY" use="required" type="xs:NCName"/>
+      <xs:attribute name="PROGRAM" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MUSICFOLDERS">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="COLLECTION">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ENTRY"/>
+      </xs:sequence>
+      <xs:attribute name="ENTRIES" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SETS">
+    <xs:complexType>
+      <xs:attribute name="ENTRIES" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PLAYLISTS" type="NODE"/>
+  <xs:element name="ENTRY">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="LOCATION"/>
+        <xs:element minOccurs="0" ref="ALBUM"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="MODIFICATION_INFO"/>
+          <xs:element ref="INFO"/>
+        </xs:sequence>
+        <xs:choice minOccurs="0">
+          <xs:sequence>
+            <xs:element ref="PRIMARYKEY"/>
+            <xs:element ref="EXTENDEDDATA"/>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:element ref="TEMPO"/>
+            <xs:element ref="LOUDNESS"/>
+            <xs:element ref="MUSICAL_KEY"/>
+            <xs:element maxOccurs="unbounded" ref="CUE_V2"/>
+          </xs:sequence>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="ARTIST"/>
+      <xs:attribute name="AUDIO_ID" type="xs:base64Binary"/>
+      <xs:attribute name="MODIFIED_DATE"/>
+      <xs:attribute name="MODIFIED_TIME" type="xs:integer"/>
+      <xs:attribute name="TITLE"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LOCATION">
+    <xs:complexType>
+      <xs:attribute name="DIR" use="required"/>
+      <xs:attribute name="FILE" use="required"/>
+      <xs:attribute name="VOLUME" use="required" type="xs:NCName"/>
+      <xs:attribute name="VOLUMEID" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ALBUM">
+    <xs:complexType>
+      <xs:attribute name="TITLE"/>
+      <xs:attribute name="TRACK" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MODIFICATION_INFO">
+    <xs:complexType>
+      <xs:attribute name="AUTHOR_TYPE" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="INFO">
+    <xs:complexType>
+      <xs:attribute name="BITRATE" use="required" type="xs:integer"/>
+      <xs:attribute name="COMMENT"/>
+      <xs:attribute name="COVERARTID"/>
+      <xs:attribute name="FILESIZE" use="required" type="xs:integer"/>
+      <xs:attribute name="FLAGS" use="required" type="xs:integer"/>
+      <xs:attribute name="GENRE"/>
+      <xs:attribute name="IMPORT_DATE"/>
+      <xs:attribute name="KEY"/>
+      <xs:attribute name="KEY_LYRICS" type="xs:NCName"/>
+      <xs:attribute name="LABEL"/>
+      <xs:attribute name="LAST_PLAYED" use="required"/>
+      <xs:attribute name="PLAYCOUNT" use="required" type="xs:integer"/>
+      <xs:attribute name="PLAYTIME" use="required" type="xs:integer"/>
+      <xs:attribute name="PLAYTIME_FLOAT" type="xs:decimal"/>
+      <xs:attribute name="RANKING" type="xs:integer"/>
+      <xs:attribute name="RELEASE_DATE"/>
+      <xs:attribute name="REMIXER"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PRIMARYKEY">
+    <xs:complexType>
+      <xs:attribute name="KEY" use="required"/>
+      <xs:attribute name="TYPE" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EXTENDEDDATA">
+    <xs:complexType>
+      <xs:attribute name="DECK" use="required" type="xs:integer"/>
+      <xs:attribute name="DURATION" use="required" type="xs:decimal"/>
+      <xs:attribute name="EXTENDEDTYPE" use="required" type="xs:NCName"/>
+      <xs:attribute name="PLAYEDPUBLIC" use="required" type="xs:integer"/>
+      <xs:attribute name="STARTDATE" use="required" type="xs:integer"/>
+      <xs:attribute name="STARTTIME" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TEMPO">
+    <xs:complexType>
+      <xs:attribute name="BPM" use="required" type="xs:decimal"/>
+      <xs:attribute name="BPM_QUALITY" use="required" type="xs:decimal"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LOUDNESS">
+    <xs:complexType>
+      <xs:attribute name="ANALYZED_DB" use="required" type="xs:decimal"/>
+      <xs:attribute name="PEAK_DB" use="required" type="xs:decimal"/>
+      <xs:attribute name="PERCEIVED_DB" use="required" type="xs:decimal"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MUSICAL_KEY">
+    <xs:complexType>
+      <xs:attribute name="VALUE" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CUE_V2">
+    <xs:complexType>
+      <xs:attribute name="DISPL_ORDER" use="required" type="xs:integer"/>
+      <xs:attribute name="HOTCUE" use="required" type="xs:integer"/>
+      <xs:attribute name="LEN" use="required" type="xs:decimal"/>
+      <xs:attribute name="NAME" use="required" type="xs:NCName"/>
+      <xs:attribute name="REPEATS" use="required" type="xs:integer"/>
+      <xs:attribute name="START" use="required" type="xs:decimal"/>
+      <xs:attribute name="TYPE" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="NODE">
+    <xs:sequence>
+      <xs:element ref="NODE"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NODE">
+    <xs:complexType>
+      <xs:sequence minOccurs="0">
+        <xs:element ref="SUBNODES"/>
+        <xs:element ref="PLAYLIST"/>
+      </xs:sequence>
+      <xs:attribute name="NAME" use="required"/>
+      <xs:attribute name="TYPE" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SUBNODES">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="NODE">
+          <xs:attribute name="COUNT" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PLAYLIST">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ENTRY"/>
+      </xs:sequence>
+      <xs:attribute name="ENTRIES" use="required" type="xs:integer"/>
+      <xs:attribute name="TYPE" use="required" type="xs:NCName"/>
+      <xs:attribute name="UUID" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

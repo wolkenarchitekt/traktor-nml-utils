@@ -31,7 +31,24 @@ virtualenv-test:
 	. $(VIRTUALENV_DIR)/bin/activate && \
 		pytest -s -v tests/test_parser.py::test_get_cuepoints
 
+package:
+	# Convert readme for pypi
+	pandoc --from=markdown --to=rst --output=README README.md
 
 generate-models:
-	docker build -t trang -f ./xml_schema_gen/Dockerfile ./xml_schema_gen
+
+#	docker build \
+#		--build-arg inputfile=collection.nml \
+#		--build-arg package="traktor_nml_utils.models.collection" \
+#		-t trang \
+#		-f ./xml_schema_gen/Dockerfile \
+#		./xml_schema_gen
+#	docker run --rm -v $(PWD):/opt/workspace trang
+
+	docker build \
+		--build-arg inputfile=history.nml \
+		--build-arg package="traktor_nml_utils.models.history" \
+		-t trang \
+		-f ./xml_schema_gen/Dockerfile \
+		./xml_schema_gen
 	docker run --rm -v $(PWD):/opt/workspace trang
