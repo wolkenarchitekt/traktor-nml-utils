@@ -6,12 +6,20 @@ from typing import List, Optional
 @dataclass
 class Album:
     """
+    :ivar of_tracks:
     :ivar title:
     :ivar track:
     """
     class Meta:
         name = "ALBUM"
 
+    of_tracks: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="OF_TRACKS",
+            type="Attribute"
+        )
+    )
     title: Optional[str] = field(
         default=None,
         metadata=dict(
@@ -24,6 +32,177 @@ class Album:
         metadata=dict(
             name="TRACK",
             type="Attribute"
+        )
+    )
+
+
+@dataclass
+class Cell:
+    """
+    :ivar bpm:
+    :ivar cellname:
+    :ivar color:
+    :ivar dir:
+    :ivar end_marker:
+    :ivar file:
+    :ivar gain:
+    :ivar index:
+    :ivar mode:
+    :ivar nudge:
+    :ivar offset:
+    :ivar reverse:
+    :ivar speed:
+    :ivar start_marker:
+    :ivar sync:
+    :ivar transpose:
+    :ivar type:
+    :ivar volume:
+    """
+    class Meta:
+        name = "CELL"
+
+    bpm: Optional[Decimal] = field(
+        default=None,
+        metadata=dict(
+            name="BPM",
+            type="Attribute",
+            required=True
+        )
+    )
+    cellname: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="CELLNAME",
+            type="Attribute",
+            required=True
+        )
+    )
+    color: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="COLOR",
+            type="Attribute",
+            required=True
+        )
+    )
+    dir: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="DIR",
+            type="Attribute",
+            required=True
+        )
+    )
+    end_marker: Optional[Decimal] = field(
+        default=None,
+        metadata=dict(
+            name="END_MARKER",
+            type="Attribute",
+            required=True
+        )
+    )
+    file: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="FILE",
+            type="Attribute",
+            required=True
+        )
+    )
+    gain: Optional[Decimal] = field(
+        default=None,
+        metadata=dict(
+            name="GAIN",
+            type="Attribute",
+            required=True
+        )
+    )
+    index: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="INDEX",
+            type="Attribute",
+            required=True
+        )
+    )
+    mode: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="MODE",
+            type="Attribute",
+            required=True
+        )
+    )
+    nudge: Optional[Decimal] = field(
+        default=None,
+        metadata=dict(
+            name="NUDGE",
+            type="Attribute",
+            required=True
+        )
+    )
+    offset: Optional[Decimal] = field(
+        default=None,
+        metadata=dict(
+            name="OFFSET",
+            type="Attribute",
+            required=True
+        )
+    )
+    reverse: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="REVERSE",
+            type="Attribute",
+            required=True
+        )
+    )
+    speed: Optional[Decimal] = field(
+        default=None,
+        metadata=dict(
+            name="SPEED",
+            type="Attribute",
+            required=True
+        )
+    )
+    start_marker: Optional[Decimal] = field(
+        default=None,
+        metadata=dict(
+            name="START_MARKER",
+            type="Attribute",
+            required=True
+        )
+    )
+    sync: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="SYNC",
+            type="Attribute",
+            required=True
+        )
+    )
+    transpose: Optional[Decimal] = field(
+        default=None,
+        metadata=dict(
+            name="TRANSPOSE",
+            type="Attribute",
+            required=True
+        )
+    )
+    type: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="TYPE",
+            type="Attribute",
+            required=True
+        )
+    )
+    volume: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="VOLUME",
+            type="Attribute",
+            required=True
         )
     )
 
@@ -101,69 +280,6 @@ class CueV2:
 
 
 @dataclass
-class Extendeddata:
-    """
-    :ivar deck:
-    :ivar duration:
-    :ivar extendedtype:
-    :ivar playedpublic:
-    :ivar startdate:
-    :ivar starttime:
-    """
-    class Meta:
-        name = "EXTENDEDDATA"
-
-    deck: Optional[int] = field(
-        default=None,
-        metadata=dict(
-            name="DECK",
-            type="Attribute",
-            required=True
-        )
-    )
-    duration: Optional[Decimal] = field(
-        default=None,
-        metadata=dict(
-            name="DURATION",
-            type="Attribute",
-            required=True
-        )
-    )
-    extendedtype: Optional[str] = field(
-        default=None,
-        metadata=dict(
-            name="EXTENDEDTYPE",
-            type="Attribute",
-            required=True
-        )
-    )
-    playedpublic: Optional[int] = field(
-        default=None,
-        metadata=dict(
-            name="PLAYEDPUBLIC",
-            type="Attribute",
-            required=True
-        )
-    )
-    startdate: Optional[int] = field(
-        default=None,
-        metadata=dict(
-            name="STARTDATE",
-            type="Attribute",
-            required=True
-        )
-    )
-    starttime: Optional[int] = field(
-        default=None,
-        metadata=dict(
-            name="STARTTIME",
-            type="Attribute",
-            required=True
-        )
-    )
-
-
-@dataclass
 class Head:
     """
     :ivar company:
@@ -194,6 +310,7 @@ class Head:
 class Info:
     """
     :ivar bitrate:
+    :ivar catalog_no:
     :ivar comment:
     :ivar coverartid:
     :ivar filesize:
@@ -204,10 +321,13 @@ class Info:
     :ivar key_lyrics:
     :ivar label:
     :ivar last_played:
+    :ivar mix:
     :ivar playcount:
     :ivar playtime:
     :ivar playtime_float:
+    :ivar producer:
     :ivar ranking:
+    :ivar rating:
     :ivar release_date:
     :ivar remixer:
     """
@@ -218,8 +338,14 @@ class Info:
         default=None,
         metadata=dict(
             name="BITRATE",
-            type="Attribute",
-            required=True
+            type="Attribute"
+        )
+    )
+    catalog_no: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="CATALOG_NO",
+            type="Attribute"
         )
     )
     comment: Optional[str] = field(
@@ -240,16 +366,14 @@ class Info:
         default=None,
         metadata=dict(
             name="FILESIZE",
-            type="Attribute",
-            required=True
+            type="Attribute"
         )
     )
     flags: Optional[int] = field(
         default=None,
         metadata=dict(
             name="FLAGS",
-            type="Attribute",
-            required=True
+            type="Attribute"
         )
     )
     genre: Optional[str] = field(
@@ -291,24 +415,28 @@ class Info:
         default=None,
         metadata=dict(
             name="LAST_PLAYED",
-            type="Attribute",
-            required=True
+            type="Attribute"
+        )
+    )
+    mix: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="MIX",
+            type="Attribute"
         )
     )
     playcount: Optional[int] = field(
         default=None,
         metadata=dict(
             name="PLAYCOUNT",
-            type="Attribute",
-            required=True
+            type="Attribute"
         )
     )
     playtime: Optional[int] = field(
         default=None,
         metadata=dict(
             name="PLAYTIME",
-            type="Attribute",
-            required=True
+            type="Attribute"
         )
     )
     playtime_float: Optional[Decimal] = field(
@@ -318,10 +446,24 @@ class Info:
             type="Attribute"
         )
     )
+    producer: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="PRODUCER",
+            type="Attribute"
+        )
+    )
     ranking: Optional[int] = field(
         default=None,
         metadata=dict(
             name="RANKING",
+            type="Attribute"
+        )
+    )
+    rating: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="RATING",
             type="Attribute"
         )
     )
@@ -400,16 +542,14 @@ class Loudness:
         default=None,
         metadata=dict(
             name="ANALYZED_DB",
-            type="Attribute",
-            required=True
+            type="Attribute"
         )
     )
     peak_db: Optional[Decimal] = field(
         default=None,
         metadata=dict(
             name="PEAK_DB",
-            type="Attribute",
-            required=True
+            type="Attribute"
         )
     )
     perceived_db: Optional[Decimal] = field(
@@ -465,12 +605,6 @@ class Musicfolders:
 
 
 @dataclass
-class Playlists:
-    class Meta:
-        name = "PLAYLISTS"
-
-
-@dataclass
 class Primarykey:
     """
     :ivar key:
@@ -498,17 +632,26 @@ class Primarykey:
 
 
 @dataclass
-class Sets:
+class SortingData:
     """
-    :ivar entries:
+    :ivar idx:
+    :ivar ord:
     """
     class Meta:
-        name = "SETS"
+        name = "SORTING_DATA"
 
-    entries: Optional[int] = field(
+    idx: Optional[int] = field(
         default=None,
         metadata=dict(
-            name="ENTRIES",
+            name="IDX",
+            type="Attribute",
+            required=True
+        )
+    )
+    ord: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="ORD",
             type="Attribute",
             required=True
         )
@@ -518,11 +661,21 @@ class Sets:
 @dataclass
 class Subnodes:
     """
+    :ivar node:
     :ivar count:
     """
     class Meta:
         name = "SUBNODES"
 
+    node: List["Node"] = field(
+        default_factory=list,
+        metadata=dict(
+            name="NODE",
+            type="Element",
+            min_occurs=1,
+            max_occurs=9223372036854775807
+        )
+    )
     count: Optional[int] = field(
         default=None,
         metadata=dict(
@@ -538,6 +691,7 @@ class Tempo:
     """
     :ivar bpm:
     :ivar bpm_quality:
+    :ivar bpm_transientcoherence:
     """
     class Meta:
         name = "TEMPO"
@@ -554,8 +708,14 @@ class Tempo:
         default=None,
         metadata=dict(
             name="BPM_QUALITY",
-            type="Attribute",
-            required=True
+            type="Attribute"
+        )
+    )
+    bpm_transientcoherence: Optional[Decimal] = field(
+        default=None,
+        metadata=dict(
+            name="BPM_TRANSIENTCOHERENCE",
+            type="Attribute"
         )
     )
 
@@ -563,18 +723,19 @@ class Tempo:
 @dataclass
 class Entry:
     """
+    :ivar primarykey:
     :ivar location:
     :ivar album:
     :ivar modification_info:
     :ivar info:
-    :ivar primarykey:
-    :ivar extendeddata:
     :ivar tempo:
     :ivar loudness:
     :ivar musical_key:
     :ivar cue_v2:
     :ivar artist:
     :ivar audio_id:
+    :ivar lock:
+    :ivar lock_modification_time:
     :ivar modified_date:
     :ivar modified_time:
     :ivar title:
@@ -582,6 +743,13 @@ class Entry:
     class Meta:
         name = "ENTRY"
 
+    primarykey: Optional[Primarykey] = field(
+        default=None,
+        metadata=dict(
+            name="PRIMARYKEY",
+            type="Element"
+        )
+    )
     location: Optional[Location] = field(
         default=None,
         metadata=dict(
@@ -610,44 +778,25 @@ class Entry:
             type="Element"
         )
     )
-    primarykey: Optional[Primarykey] = field(
-        default=None,
-        metadata=dict(
-            name="PRIMARYKEY",
-            type="Element",
-            required=True
-        )
-    )
-    extendeddata: Optional[Extendeddata] = field(
-        default=None,
-        metadata=dict(
-            name="EXTENDEDDATA",
-            type="Element",
-            required=True
-        )
-    )
     tempo: Optional[Tempo] = field(
         default=None,
         metadata=dict(
             name="TEMPO",
-            type="Element",
-            required=True
+            type="Element"
         )
     )
     loudness: Optional[Loudness] = field(
         default=None,
         metadata=dict(
             name="LOUDNESS",
-            type="Element",
-            required=True
+            type="Element"
         )
     )
     musical_key: Optional[MusicalKey] = field(
         default=None,
         metadata=dict(
             name="MUSICAL_KEY",
-            type="Element",
-            required=True
+            type="Element"
         )
     )
     cue_v2: List[CueV2] = field(
@@ -655,7 +804,7 @@ class Entry:
         metadata=dict(
             name="CUE_V2",
             type="Element",
-            min_occurs=1,
+            min_occurs=0,
             max_occurs=9223372036854775807
         )
     )
@@ -670,6 +819,20 @@ class Entry:
         default=None,
         metadata=dict(
             name="AUDIO_ID",
+            type="Attribute"
+        )
+    )
+    lock: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="LOCK",
+            type="Attribute"
+        )
+    )
+    lock_modification_time: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="LOCK_MODIFICATION_TIME",
             type="Attribute"
         )
     )
@@ -692,6 +855,89 @@ class Entry:
         metadata=dict(
             name="TITLE",
             type="Attribute"
+        )
+    )
+
+
+@dataclass
+class Slot:
+    """
+    :ivar cell:
+    :ivar active_cell_index:
+    :ivar fxenable:
+    :ivar keylock:
+    :ivar punchmode:
+    """
+    class Meta:
+        name = "SLOT"
+
+    cell: List[Cell] = field(
+        default_factory=list,
+        metadata=dict(
+            name="CELL",
+            type="Element",
+            min_occurs=1,
+            max_occurs=9223372036854775807
+        )
+    )
+    active_cell_index: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="ACTIVE_CELL_INDEX",
+            type="Attribute",
+            required=True
+        )
+    )
+    fxenable: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="FXENABLE",
+            type="Attribute",
+            required=True
+        )
+    )
+    keylock: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="KEYLOCK",
+            type="Attribute",
+            required=True
+        )
+    )
+    punchmode: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="PUNCHMODE",
+            type="Attribute",
+            required=True
+        )
+    )
+
+
+@dataclass
+class SortingOrder:
+    """
+    :ivar sorting_data:
+    :ivar path:
+    """
+    class Meta:
+        name = "SORTING_ORDER"
+
+    sorting_data: List[SortingData] = field(
+        default_factory=list,
+        metadata=dict(
+            name="SORTING_DATA",
+            type="Element",
+            min_occurs=1,
+            max_occurs=9223372036854775807
+        )
+    )
+    path: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="PATH",
+            type="Attribute",
+            required=True
         )
     )
 
@@ -740,7 +986,7 @@ class Playlist:
         metadata=dict(
             name="ENTRY",
             type="Element",
-            min_occurs=1,
+            min_occurs=0,
             max_occurs=9223372036854775807
         )
     )
@@ -771,6 +1017,186 @@ class Playlist:
 
 
 @dataclass
+class Set:
+    """
+    :ivar location:
+    :ivar modification_info:
+    :ivar info:
+    :ivar tempo:
+    :ivar slot:
+    :ivar artist:
+    :ivar quant_state:
+    :ivar quant_val_ue:
+    :ivar title:
+    """
+    class Meta:
+        name = "SET"
+
+    location: Optional[Location] = field(
+        default=None,
+        metadata=dict(
+            name="LOCATION",
+            type="Element",
+            required=True
+        )
+    )
+    modification_info: Optional[ModificationInfo] = field(
+        default=None,
+        metadata=dict(
+            name="MODIFICATION_INFO",
+            type="Element",
+            required=True
+        )
+    )
+    info: Optional[Info] = field(
+        default=None,
+        metadata=dict(
+            name="INFO",
+            type="Element",
+            required=True
+        )
+    )
+    tempo: Optional[Tempo] = field(
+        default=None,
+        metadata=dict(
+            name="TEMPO",
+            type="Element",
+            required=True
+        )
+    )
+    slot: List[Slot] = field(
+        default_factory=list,
+        metadata=dict(
+            name="SLOT",
+            type="Element",
+            min_occurs=1,
+            max_occurs=9223372036854775807
+        )
+    )
+    artist: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="ARTIST",
+            type="Attribute",
+            required=True
+        )
+    )
+    quant_state: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="QUANT_STATE",
+            type="Attribute",
+            required=True
+        )
+    )
+    quant_val_ue: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="QUANT_VAlUE",
+            type="Attribute",
+            required=True
+        )
+    )
+    title: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="TITLE",
+            type="Attribute",
+            required=True
+        )
+    )
+
+
+@dataclass
+class Node:
+    """
+    :ivar subnodes:
+    :ivar playlist:
+    :ivar name:
+    :ivar type:
+    """
+    class Meta:
+        name = "NODE"
+
+    subnodes: Optional[Subnodes] = field(
+        default=None,
+        metadata=dict(
+            name="SUBNODES",
+            type="Element"
+        )
+    )
+    playlist: Optional[Playlist] = field(
+        default=None,
+        metadata=dict(
+            name="PLAYLIST",
+            type="Element"
+        )
+    )
+    name: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="NAME",
+            type="Attribute",
+            required=True
+        )
+    )
+    type: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="TYPE",
+            type="Attribute",
+            required=True
+        )
+    )
+
+
+@dataclass
+class Sets:
+    """
+    :ivar set:
+    :ivar entries:
+    """
+    class Meta:
+        name = "SETS"
+
+    set: List[Set] = field(
+        default_factory=list,
+        metadata=dict(
+            name="SET",
+            type="Element",
+            min_occurs=1,
+            max_occurs=9223372036854775807
+        )
+    )
+    entries: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="ENTRIES",
+            type="Attribute",
+            required=True
+        )
+    )
+
+
+@dataclass
+class Playlists:
+    """
+    :ivar node:
+    """
+    class Meta:
+        name = "PLAYLISTS"
+
+    node: Optional[Node] = field(
+        default=None,
+        metadata=dict(
+            name="NODE",
+            type="Element",
+            required=True
+        )
+    )
+
+
+@dataclass
 class Nml:
     """
     :ivar head:
@@ -778,6 +1204,7 @@ class Nml:
     :ivar collection:
     :ivar sets:
     :ivar playlists:
+    :ivar sorting_order:
     :ivar version:
     """
     class Meta:
@@ -823,53 +1250,19 @@ class Nml:
             required=True
         )
     )
+    sorting_order: List[SortingOrder] = field(
+        default_factory=list,
+        metadata=dict(
+            name="SORTING_ORDER",
+            type="Element",
+            min_occurs=1,
+            max_occurs=9223372036854775807
+        )
+    )
     version: Optional[int] = field(
         default=None,
         metadata=dict(
             name="VERSION",
-            type="Attribute",
-            required=True
-        )
-    )
-
-
-@dataclass
-class Node:
-    """
-    :ivar subnodes:
-    :ivar playlist:
-    :ivar name:
-    :ivar type:
-    """
-    class Meta:
-        name = "NODE"
-
-    subnodes: Optional[Subnodes] = field(
-        default=None,
-        metadata=dict(
-            name="SUBNODES",
-            type="Element"
-        )
-    )
-    playlist: Optional[Playlist] = field(
-        default=None,
-        metadata=dict(
-            name="PLAYLIST",
-            type="Element"
-        )
-    )
-    name: Optional[str] = field(
-        default=None,
-        metadata=dict(
-            name="NAME",
-            type="Attribute",
-            required=True
-        )
-    )
-    type: Optional[str] = field(
-        default=None,
-        metadata=dict(
-            name="TYPE",
             type="Attribute",
             required=True
         )

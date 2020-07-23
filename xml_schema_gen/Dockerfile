@@ -1,3 +1,14 @@
+#FROM ubuntu:20.04
+#RUN apt-get update && \
+#    apt-get install -y openjdk-8-jdk python3 python3-pip
+#
+#COPY pom.xml .
+#
+#RUN mvn \
+#    --batch-mode \
+#    --settings /usr/share/maven/ref/settings-docker.xml \
+#    dependency:resolve-plugins dependency:resolve
+
 FROM maven AS maven-builder
 ARG package
 ARG inputfile
@@ -22,5 +33,6 @@ ENV inputfile=$inputfile
 WORKDIR /opt/workspace
 COPY --from=maven-builder /opt/workspace/target/trang/schema.xsd /schema.xsd
 RUN pip install xsdata ipdb
-CMD cp /schema.xsd xml_schema_gen/${inputfile}.xsd && xsdata /schema.xsd --package ${package}
+#CMD cp /schema.xsd xml_schema_gen/${inputfile}.xsd && xsdata /schema.xsd --package ${package}
+CMD cat /schema.xsd
 #CMD ls /schema.xsd
