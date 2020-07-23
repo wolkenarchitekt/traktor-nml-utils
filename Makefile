@@ -35,27 +35,14 @@ package:
 	# Convert readme for pypi
 	pandoc --from=markdown --to=rst --output=README README.md
 
-xml_schema_build:
+xml-schema-build:
 	docker build \
 		--build-arg inputfile=collection.nml \
 		-t trang \
 		-f ./xml_schema_gen/Dockerfile \
 		./xml_schema_gen
-	docker run --rm -v $(PWD):/opt/workspace trang
-xml_schema_run:
-generate-models:
-#	docker build \
-#		--build-arg inputfile=collection.nml \
-#		--build-arg package="traktor_nml_utils.schema.collection" \
-#		-t trang \
-#		-f ./xml_schema_gen/Dockerfile \
-#		./xml_schema_gen
-#	docker run --rm -v $(PWD):/opt/workspace trang
+	docker run --rm trang bash -c "cat /opt/workspace/target/trang/collection.xsd" > xml_schema_gen/collection.xsd
+	docker run --rm trang bash -c "cat /opt/workspace/target/trang/history.xsd" > xml_schema_gen/history.xsd
 
-#	docker build \
-#		--build-arg inputfile=history.nml \
-#		--build-arg package="traktor_nml_utils.models.history" \
-#		-t trang \
-#		-f ./xml_schema_gen/Dockerfile \
-#		./xml_schema_gen
-	docker run --rm -v $(PWD):/opt/workspace trang
+	xsdata xml_schema_gen/collection.xsd --package traktor_nml_utils.models
+	xsdata xml_schema_gen/history.xsd --package traktor_nml_utils.models

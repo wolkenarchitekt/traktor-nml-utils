@@ -38,30 +38,44 @@
   <xs:element name="ENTRY">
     <xs:complexType>
       <xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="PRIMARYKEY"/>
+          <xs:element ref="EXTENDEDDATA"/>
+        </xs:sequence>
         <xs:element minOccurs="0" ref="LOCATION"/>
         <xs:element minOccurs="0" ref="ALBUM"/>
         <xs:sequence minOccurs="0">
           <xs:element ref="MODIFICATION_INFO"/>
           <xs:element ref="INFO"/>
         </xs:sequence>
-        <xs:choice minOccurs="0">
-          <xs:sequence>
-            <xs:element ref="PRIMARYKEY"/>
-            <xs:element ref="EXTENDEDDATA"/>
-          </xs:sequence>
-          <xs:sequence>
-            <xs:element ref="TEMPO"/>
-            <xs:element ref="LOUDNESS"/>
-            <xs:element ref="MUSICAL_KEY"/>
-            <xs:element maxOccurs="unbounded" ref="CUE_V2"/>
-          </xs:sequence>
-        </xs:choice>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="TEMPO"/>
+          <xs:element ref="LOUDNESS"/>
+          <xs:element ref="MUSICAL_KEY"/>
+          <xs:element maxOccurs="unbounded" ref="CUE_V2"/>
+        </xs:sequence>
       </xs:sequence>
       <xs:attribute name="ARTIST"/>
       <xs:attribute name="AUDIO_ID" type="xs:base64Binary"/>
       <xs:attribute name="MODIFIED_DATE"/>
       <xs:attribute name="MODIFIED_TIME" type="xs:integer"/>
       <xs:attribute name="TITLE"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PRIMARYKEY">
+    <xs:complexType>
+      <xs:attribute name="KEY" use="required"/>
+      <xs:attribute name="TYPE" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EXTENDEDDATA">
+    <xs:complexType>
+      <xs:attribute name="DECK" use="required" type="xs:integer"/>
+      <xs:attribute name="DURATION" use="required" type="xs:decimal"/>
+      <xs:attribute name="EXTENDEDTYPE" use="required" type="xs:NCName"/>
+      <xs:attribute name="PLAYEDPUBLIC" use="required" type="xs:integer"/>
+      <xs:attribute name="STARTDATE" use="required" type="xs:integer"/>
+      <xs:attribute name="STARTTIME" use="required" type="xs:integer"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="LOCATION">
@@ -102,22 +116,6 @@
       <xs:attribute name="RANKING" type="xs:integer"/>
       <xs:attribute name="RELEASE_DATE"/>
       <xs:attribute name="REMIXER"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="PRIMARYKEY">
-    <xs:complexType>
-      <xs:attribute name="KEY" use="required"/>
-      <xs:attribute name="TYPE" use="required" type="xs:NCName"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EXTENDEDDATA">
-    <xs:complexType>
-      <xs:attribute name="DECK" use="required" type="xs:integer"/>
-      <xs:attribute name="DURATION" use="required" type="xs:decimal"/>
-      <xs:attribute name="EXTENDEDTYPE" use="required" type="xs:NCName"/>
-      <xs:attribute name="PLAYEDPUBLIC" use="required" type="xs:integer"/>
-      <xs:attribute name="STARTDATE" use="required" type="xs:integer"/>
-      <xs:attribute name="STARTTIME" use="required" type="xs:integer"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="TEMPO">
