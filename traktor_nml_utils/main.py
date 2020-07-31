@@ -120,7 +120,6 @@ class TraktorCollection:
         ]
 
     def _get_playlists(self, parent=None, prefix=None):
-        # import pdb; pdb.set_trace()
         playlists = []
         if parent is None:
             parent = self.xml_tree.find(PLAYLIST_ROOT_XPATH)
