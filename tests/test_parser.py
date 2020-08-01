@@ -28,8 +28,15 @@ def test_collection(nml_file):
 def test_playlists(nml_file):
     collection = TraktorCollection(nml_file)
     assert collection.playlists
+    assert len(collection.playlists) == 3
     playlist = collection.playlists[0]
     assert playlist.name == 'Preparation'
+    assert len(playlist.entries) == 1
+    playlist = collection.playlists[1]
+    assert playlist.name == 'Foo/Preparation2'
+    assert len(playlist.entries) == 1
+    playlist = collection.playlists[2]
+    assert playlist.name == 'Foo/Bar/Preparation3'
     assert len(playlist.entries) == 1
 
 
