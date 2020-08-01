@@ -9,7 +9,7 @@ def read(fname):
 
 setup(
     name='traktor-nml-utils',
-    version='1.0.2',
+    version='2.0.0',
     description='Utilities to read and write Traktor NML files',
     long_description=read('README'),
     url='http://github.com/ifischer/traktor-nml-utils',

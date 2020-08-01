@@ -1,6 +1,8 @@
 Traktor NML utils
 =================
 
+|Build Status|
+
 This module contains utilities to parse and modify Native Instruments
 Traktor NML files. It was created to be the by far best available
 library to handle Traktor collections.
@@ -21,7 +23,7 @@ Installation
 
 .. code:: shell
 
-    pip install --user git+ssh://git@github.com/ifischer/traktor-nml-utils.git@1.0.0
+    pip install traktor-nml-utils
 
 Usage
 -----
@@ -64,3 +66,6 @@ Get artist, title and rating of all collection entries
 
     for entry in collection.entries:
         print(f'{entry.artist} - {entry.title} ({entry.ranking}')
+
+.. |Build Status| image:: https://travis-ci.com/wolkenarchitekt/traktor-nml-utils.svg?branch=master
+   :target: https://travis-ci.com/wolkenarchitekt/traktor-nml-utils
