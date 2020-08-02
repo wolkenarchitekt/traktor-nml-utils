@@ -1,4 +1,4 @@
-__version__ = "2.0.0"
+__version__ = "2.0.1"
 from pathlib import Path
 
 from traktor_nml_utils.models.collection import Nml as CollectionNml
