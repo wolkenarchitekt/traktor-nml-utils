@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="NML" type="NMLType"/>
+  <xs:complexType name="HEADType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:anyURI" name="COMPANY"/>
+        <xs:attribute type="xs:string" name="PROGRAM"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LOCATIONType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="DIR" use="optional"/>
+        <xs:attribute type="xs:string" name="FILE" use="optional"/>
+        <xs:attribute type="xs:string" name="VOLUME" use="optional"/>
+        <xs:attribute type="xs:string" name="VOLUMEID" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MODIFICATION_INFOType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="AUTHOR_TYPE" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="INFOType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:int" name="BITRATE" use="optional"/>
+        <xs:attribute type="xs:string" name="GENRE" use="optional"/>
+        <xs:attribute type="xs:string" name="COMMENT" use="optional"/>
+        <xs:attribute type="xs:string" name="COVERARTID" use="optional"/>
+        <xs:attribute type="xs:string" name="KEY" use="optional"/>
+        <xs:attribute type="xs:short" name="PLAYTIME" use="optional"/>
+        <xs:attribute type="xs:float" name="PLAYTIME_FLOAT" use="optional"/>
+        <xs:attribute type="xs:string" name="IMPORT_DATE" use="optional"/>
+        <xs:attribute type="xs:string" name="RELEASE_DATE" use="optional"/>
+        <xs:attribute type="xs:byte" name="FLAGS" use="optional"/>
+        <xs:attribute type="xs:int" name="FILESIZE" use="optional"/>
+        <xs:attribute type="xs:string" name="LABEL" use="optional"/>
+        <xs:attribute type="xs:string" name="KEY_LYRICS" use="optional"/>
+        <xs:attribute type="xs:string" name="CATALOG_NO" use="optional"/>
+        <xs:attribute type="xs:byte" name="PLAYCOUNT" use="optional"/>
+        <xs:attribute type="xs:short" name="RANKING" use="optional"/>
+        <xs:attribute type="xs:string" name="LAST_PLAYED" use="optional"/>
+        <xs:attribute type="xs:string" name="REMIXER" use="optional"/>
+        <xs:attribute type="xs:string" name="RATING" use="optional"/>
+        <xs:attribute type="xs:string" name="PRODUCER" use="optional"/>
+        <xs:attribute type="xs:string" name="MIX" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TEMPOType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:float" name="BPM" use="optional"/>
+        <xs:attribute type="xs:float" name="BPM_QUALITY" use="optional"/>
+        <xs:attribute type="xs:float" name="BPM_TRANSIENTCOHERENCE" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LOUDNESSType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:float" name="PEAK_DB" use="optional"/>
+        <xs:attribute type="xs:float" name="PERCEIVED_DB" use="optional"/>
+        <xs:attribute type="xs:float" name="ANALYZED_DB" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MUSICAL_KEYType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:byte" name="VALUE" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="CUE_V2Type">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="NAME" use="optional"/>
+        <xs:attribute type="xs:byte" name="DISPL_ORDER" use="optional"/>
+        <xs:attribute type="xs:byte" name="TYPE" use="optional"/>
+        <xs:attribute type="xs:float" name="START" use="optional"/>
+        <xs:attribute type="xs:float" name="LEN" use="optional"/>
+        <xs:attribute type="xs:byte" name="REPEATS" use="optional"/>
+        <xs:attribute type="xs:byte" name="HOTCUE" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ENTRYType">
+    <xs:sequence>
+      <xs:element type="LOCATIONType" name="LOCATION" minOccurs="0"/>
+      <xs:element type="ALBUMType" name="ALBUM" minOccurs="0"/>
+      <xs:element type="MODIFICATION_INFOType" name="MODIFICATION_INFO" minOccurs="0"/>
+      <xs:element type="INFOType" name="INFO" minOccurs="0"/>
+      <xs:element type="TEMPOType" name="TEMPO" minOccurs="0"/>
+      <xs:element type="LOUDNESSType" name="LOUDNESS" minOccurs="0"/>
+      <xs:element type="MUSICAL_KEYType" name="MUSICAL_KEY" minOccurs="0"/>
+      <xs:element type="CUE_V2Type" name="CUE_V2" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="PRIMARYKEYType" name="PRIMARYKEY" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="MODIFIED_DATE" use="optional"/>
+    <xs:attribute type="xs:int" name="MODIFIED_TIME" use="optional"/>
+    <xs:attribute type="xs:byte" name="LOCK" use="optional"/>
+    <xs:attribute type="xs:dateTime" name="LOCK_MODIFICATION_TIME" use="optional"/>
+    <xs:attribute type="xs:string" name="AUDIO_ID" use="optional"/>
+    <xs:attribute type="xs:string" name="TITLE" use="optional"/>
+    <xs:attribute type="xs:string" name="ARTIST" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="ALBUMType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:short" name="TRACK" use="optional"/>
+        <xs:attribute type="xs:string" name="TITLE" use="optional"/>
+        <xs:attribute type="xs:byte" name="OF_TRACKS" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="COLLECTIONType">
+    <xs:sequence>
+      <xs:element type="ENTRYType" name="ENTRY" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="ENTRIES"/>
+  </xs:complexType>
+  <xs:complexType name="CELLType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:byte" name="INDEX" use="optional"/>
+        <xs:attribute type="xs:string" name="CELLNAME" use="optional"/>
+        <xs:attribute type="xs:byte" name="COLOR" use="optional"/>
+        <xs:attribute type="xs:byte" name="SYNC" use="optional"/>
+        <xs:attribute type="xs:byte" name="REVERSE" use="optional"/>
+        <xs:attribute type="xs:byte" name="MODE" use="optional"/>
+        <xs:attribute type="xs:byte" name="TYPE" use="optional"/>
+        <xs:attribute type="xs:float" name="SPEED" use="optional"/>
+        <xs:attribute type="xs:float" name="TRANSPOSE" use="optional"/>
+        <xs:attribute type="xs:float" name="OFFSET" use="optional"/>
+        <xs:attribute type="xs:float" name="NUDGE" use="optional"/>
+        <xs:attribute type="xs:float" name="GAIN" use="optional"/>
+        <xs:attribute type="xs:float" name="START_MARKER" use="optional"/>
+        <xs:attribute type="xs:float" name="END_MARKER" use="optional"/>
+        <xs:attribute type="xs:float" name="BPM" use="optional"/>
+        <xs:attribute type="xs:string" name="DIR" use="optional"/>
+        <xs:attribute type="xs:string" name="FILE" use="optional"/>
+        <xs:attribute type="xs:string" name="VOLUME" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="SLOTType">
+    <xs:sequence>
+      <xs:element type="CELLType" name="CELL" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:byte" name="KEYLOCK" use="optional"/>
+    <xs:attribute type="xs:byte" name="FXENABLE" use="optional"/>
+    <xs:attribute type="xs:byte" name="PUNCHMODE" use="optional"/>
+    <xs:attribute type="xs:byte" name="ACTIVE_CELL_INDEX" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="SETType">
+    <xs:sequence>
+      <xs:element type="LOCATIONType" name="LOCATION"/>
+      <xs:element type="MODIFICATION_INFOType" name="MODIFICATION_INFO"/>
+      <xs:element type="INFOType" name="INFO"/>
+      <xs:element type="TEMPOType" name="TEMPO"/>
+      <xs:element type="SLOTType" name="SLOT" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="TITLE" use="optional"/>
+    <xs:attribute type="xs:string" name="ARTIST" use="optional"/>
+    <xs:attribute type="xs:byte" name="QUANT_VAlUE" use="optional"/>
+    <xs:attribute type="xs:byte" name="QUANT_STATE" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="SETSType">
+    <xs:sequence>
+      <xs:element type="SETType" name="SET" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:byte" name="ENTRIES"/>
+  </xs:complexType>
+  <xs:complexType name="PRIMARYKEYType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="TYPE" use="optional"/>
+        <xs:attribute type="xs:string" name="KEY" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="PLAYLISTType" mixed="true">
+    <xs:sequence>
+      <xs:element type="ENTRYType" name="ENTRY" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="ENTRIES" use="optional"/>
+    <xs:attribute type="xs:string" name="TYPE" use="optional"/>
+    <xs:attribute type="xs:string" name="UUID" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="NODEType">
+    <xs:sequence>
+      <xs:element type="PLAYLISTType" name="PLAYLIST" minOccurs="0"/>
+      <xs:element type="SUBNODESType" name="SUBNODES" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="TYPE" use="optional"/>
+    <xs:attribute type="xs:string" name="NAME" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="SUBNODESType">
+    <xs:sequence>
+      <xs:element type="NODEType" name="NODE" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:byte" name="COUNT"/>
+  </xs:complexType>
+  <xs:complexType name="PLAYLISTSType">
+    <xs:sequence>
+      <xs:element type="NODEType" name="NODE"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SORTING_DATAType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:byte" name="IDX" use="optional"/>
+        <xs:attribute type="xs:byte" name="ORD" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="SORTING_ORDERType">
+    <xs:sequence>
+      <xs:element type="SORTING_DATAType" name="SORTING_DATA" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="PATH" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="NMLType">
+    <xs:sequence>
+      <xs:element type="HEADType" name="HEAD"/>
+      <xs:element type="xs:string" name="MUSICFOLDERS"/>
+      <xs:element type="COLLECTIONType" name="COLLECTION"/>
+      <xs:element type="SETSType" name="SETS"/>
+      <xs:element type="PLAYLISTSType" name="PLAYLISTS"/>
+      <xs:element type="SORTING_ORDERType" name="SORTING_ORDER" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:byte" name="VERSION"/>
+  </xs:complexType>
+</xs:schema>

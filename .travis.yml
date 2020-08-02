@@ -5,7 +5,10 @@ install:
   - pip install -r requirements.txt
   - pip install -r requirements-dev.txt
   - pip install .
+  - python setup.py sdist
 script:
+  - flake8 traktor_nml_utils
+  - mypy traktor_nml_utils
+  - black --check --exclude traktor_nml_utils/models/ traktor_nml_utils tests/
   - pytest
-  - pytest --mypy
-  - flake8
+  - twine check dist/*

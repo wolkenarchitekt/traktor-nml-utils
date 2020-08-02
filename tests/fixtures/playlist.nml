@@ -11,30 +11,7 @@
             </ENTRY>
           </PLAYLIST>
         </NODE>
-        <NODE TYPE="FOLDER" NAME="Foo">
-          <SUBNODES COUNT="2">
-            <NODE TYPE="PLAYLIST" NAME="Preparation2">
-              <PLAYLIST ENTRIES="212" TYPE="LIST" UUID="f80b2bdebbb843eb897c1ae90af896f6">
-                <ENTRY>
-                  <PRIMARYKEY TYPE="TRACK" KEY="osx/:Users/:johndoe/:Music/:pechundschwefel/:549043_The_Sky_Was_Pink_Icelandic_Version.mp3"/>
-                </ENTRY>
-              </PLAYLIST>
-            </NODE>
-            <NODE TYPE="FOLDER" NAME="Bar">
-              <SUBNODES COUNT="1">
-                <NODE TYPE="PLAYLIST" NAME="Preparation3">
-                  <PLAYLIST ENTRIES="212" TYPE="LIST" UUID="f80b2bdebbb843eb897c1ae90af896f7">
-                    <ENTRY>
-                      <PRIMARYKEY TYPE="TRACK" KEY="osx/:Users/:johndoe/:Music/:pechundschwefel/:549043_The_Sky_Was_Pink_Icelandic_Version.mp3"/>
-                    </ENTRY>
-                  </PLAYLIST>
-                </NODE>
-              </SUBNODES>
-            </NODE>
-          </SUBNODES>
-        </NODE>
       </SUBNODES>
     </NODE>
   </PLAYLISTS>
 </NML>
-
