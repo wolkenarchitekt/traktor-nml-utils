@@ -29,8 +29,22 @@ collection = TraktorCollection(path=Path('collection.nml'))
 
 for entry in collection.model.entry:
     print(entry.artist, entry.title, entry.info.ranking)
-
 ```
+
+### Get cuepoint start
+
+```python
+from traktor_nml_utils import TraktorCollection
+from pathlib import Path
+
+collection = TraktorCollection(path=Path('collection.nml'))
+
+entry = collection.model.entry[0]
+
+for cue_v2 in entry.cue_v2:
+    print(cue_v2.start)
+```
+
 
 ## Run tests
 
