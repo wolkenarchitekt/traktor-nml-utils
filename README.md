@@ -9,10 +9,13 @@ files (`$TRAKTOR_DIR/History/history_$DATE.nml`).
 
 You can deal with all XML data in a pythonic way.
 
-## REWRITE IN PROGRESS ##
+## REWRITE IN PROGRESS, CONTRIBUTION WELCOME ##
 
 I'm currently rewriting this library to support reading and updating almost all available fields within NML files, using a 
 very different approach (XML schema + python-xsdata generated data classes).
+
+For current progress see branch: [xsdata-xmlbeans](https://github.com/wolkenarchitekt/traktor-nml-utils/tree/xsdata
+-xmlbeans).
 
 ## Requirements
 
