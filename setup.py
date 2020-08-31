@@ -9,9 +9,10 @@ def read(fname):
 
 setup(
     name='traktor-nml-utils',
-    version='1.0.2',
+    version='2.0.2',
     description='Utilities to read and write Traktor NML files',
-    long_description=read('README'),
+    long_description=read('README.pypi.md'),
+    long_description_content_type='text/markdown',
     url='http://github.com/ifischer/traktor-nml-utils',
     author='Ingo Fischer',
     author_email='mail@ingofischer.de',
@@ -20,6 +21,6 @@ setup(
     zip_safe=True,
     python_requires='>=3.7.0',
     install_requires=[
-        'lxml',
+        'xsdata',
     ],
 )
