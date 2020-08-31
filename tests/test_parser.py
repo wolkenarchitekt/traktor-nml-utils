@@ -1,84 +1,44 @@
-from shutil import copy2 as copy
-import pytest
+import logging
 import os
+import shutil
+from pathlib import Path
 
-from traktor_nml_utils import TraktorCollection
+from traktor_nml_utils import TraktorCollection, TraktorHistory
 
+logger = logging.getLogger(__name__)
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 
-@pytest.mark.parametrize("nml_file", [
-    os.path.join(dir_path, 'fixtures', 'collection.nml'),
-])
-def test_collection(nml_file):
-    nml_file = os.path.join(dir_path, 'fixtures', 'collection.nml')
-    collection = TraktorCollection(os.path.join(dir_path, nml_file))
-    assert collection.entries
-    entry = collection.entries[0]
-    assert entry.dir == \
-        '/:Library/:Application Support/:Native Instruments/:Traktor 2/:Factory Sounds/:'
-    assert entry.bitrate == 189720
-    assert entry.bpm == 139.999924
-    assert entry.volume == 'osx'
+def test_parse_nml_files(nml_dir: Path):
+    for path in nml_dir.glob("**/*.nml"):
+        print(path)
+        if path.name.startswith("collection"):
+            logger.info(f"Parsing collection: {path}")
+            TraktorCollection(path=path)
+        if path.name.startswith("history"):
+            logger.info(f"Parsing history: {path}")
+            TraktorHistory(path=path)
 
 
-@pytest.mark.parametrize("nml_file", [
-    os.path.join(dir_path, 'fixtures', 'playlist.nml')
-])
-def test_playlists(nml_file):
-    collection = TraktorCollection(nml_file)
-    assert collection.playlists
-    assert len(collection.playlists) == 3
-    playlist = collection.playlists[0]
-    assert playlist.name == 'Preparation'
-    assert len(playlist.entries) == 1
-    playlist = collection.playlists[1]
-    assert playlist.name == 'Foo/Preparation2'
-    assert len(playlist.entries) == 1
-    playlist = collection.playlists[2]
-    assert playlist.name == 'Foo/Bar/Preparation3'
-    assert len(playlist.entries) == 1
+def test_parse_collection():
+    path = Path(os.path.join(dir_path, "fixtures", "collection.nml"))
+    traktor_collection = TraktorCollection(path=path)
+    assert len(traktor_collection.nml.collection.entry) == 1
+    entry = traktor_collection.nml.collection.entry[0]
+    assert entry.location.dir == (
+        "/:Library/:Application Support/:Native Instruments/:Traktor 2/:Factory Sounds/:"
+    )
 
 
-@pytest.mark.parametrize("nml_file", [
-    os.path.join(dir_path, 'fixtures', 'collection.nml')
-])
-def test_update(nml_file, tmpdir):
-    nml_file = copy(os.path.join(dir_path, 'fixtures', 'collection.nml'), tmpdir)
-    collection = TraktorCollection(nml_file)
-    entry = collection.entries[0]
-    entry.volume = 'blablu'
-    entry.save()
-    assert 'blablu' in open(nml_file).read()
+def test_save_artist(tmp_path: Path):
+    tmp_collection_path = tmp_path / "collection.nml"
+    shutil.copy(
+        Path(os.path.join(dir_path, "fixtures", "collection.nml")), tmp_collection_path
+    )
 
+    traktor_collection = TraktorCollection(path=tmp_collection_path)
+    entry = traktor_collection.nml.collection.entry[0]
+    entry.artist = "Foobar"
+    traktor_collection.save()
 
-@pytest.mark.parametrize("nml_file", [
-    os.path.join(dir_path, 'fixtures', 'cuepoints.nml')
-])
-def test_cuepoints(nml_file):
-    collection = TraktorCollection(nml_file)
-    entry = collection.entries[0]
-    assert len(entry.cuepoints) == 3
-    cuepoint = entry.cuepoints[0]
-    assert cuepoint.name == 'AutoGrid'
-    assert cuepoint.cuepoint_type == 4
-    assert cuepoint.start == 52.315876
-    assert cuepoint.length == 0
-    assert cuepoint.repeats == -1
-    assert cuepoint.hotcue == 0
-
-
-@pytest.mark.parametrize("nml_file", [
-    os.path.join(dir_path, 'fixtures', 'history.nml')
-])
-def test_history(nml_file):
-    collection = TraktorCollection(nml_file)
-    assert collection.history
-    history_entry = collection.history[0]
-    assert history_entry.deck == 1
-    assert history_entry.duration == 241.700394
-    assert history_entry.played_public
-    assert history_entry.startdate == 132319762
-    assert history_entry.starttime == 68839
-    assert history_entry.filename == \
-        'Transcend/:DJing/:beatport_steve/:09 Change (Like Mix Extended Instrumental).mp3'
+    assert "Foobar" in open(tmp_collection_path).read()
