@@ -38,6 +38,7 @@ jobs:
 
     - name: Twine check
       run: |
+        python setup.py sdist
         twine check dist/*
 
     - name: Test with pytest
