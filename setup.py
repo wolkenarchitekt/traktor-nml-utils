@@ -9,7 +9,7 @@ def read(fname):
 
 setup(
     name='traktor-nml-utils',
-    version='2.0.3',
+    version='2.0.4',
     description='Utilities to read and write Traktor NML files',
     long_description=read('README.pypi.md'),
     long_description_content_type='text/markdown',
