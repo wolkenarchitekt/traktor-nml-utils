@@ -92,8 +92,15 @@ collection.save()
 Run tests within Docker container:
 
 ```shell
-make build test
+make docker-build docker-test
 ```
+
+Create virtualenv and run tests:
+
+```shell
+make virtualenv-create virtualenv-test
+```
+
 
 To test if parsing your own collection/history files with traktor-nml-utils works, 
 pass your Traktor directory to pytest:
@@ -111,7 +118,8 @@ both for history and collection files using [Apache XMLBeans](https://xmlbeans.a
 
 See them in `xml_to_xsd/collection.xsd` and `xml_to_xsd/history.xsd`.
 
-You can regenerate the XSD by putting your own `collection.nml` and `history.nml` and run:
+You can regenerate the XSD by putting your own `collection.nml` and `history.nml` overwriting
+ the existing ones in `./xml_to_xsd/` and run:
 ```shell
 make xml-to-xsd
 ```
