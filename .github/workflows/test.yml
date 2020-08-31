@@ -12,15 +12,35 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip setuptools wheel
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+
+    - name: Run flake8
+      run: |
+        flake8 traktor_nml_utils
+
+    - name: Run mypy
+      run: |
+        mypy traktor_nml_utils
+
+    - name: Run black
+      run: |
+        black --check --exclude traktor_nml_utils/models/ traktor_nml_utils tests/
+
+    - name: Twine check
+      run: |
+        python setup.py sdist
+        twine check dist/*
+
     - name: Test with pytest
       run: |
         python -m pytest

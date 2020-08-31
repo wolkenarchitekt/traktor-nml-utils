@@ -2,7 +2,6 @@ __version__ = "2.0.2"
 
 from abc import ABC
 from pathlib import Path
-from typing import Any
 
 from traktor_nml_utils.models.collection import Nml as CollectionNml
 from traktor_nml_utils.models.history import Nml as HistoryNml
