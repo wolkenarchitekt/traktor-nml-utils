@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7, 3.8]
+        python-version: [3.7]
 
     steps:
     - uses: actions/checkout@v2
@@ -18,10 +18,9 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
+        python -m pip install --upgrade pip setuptools wheel
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
     - name: Test with pytest
       run: |
-        pytest
-
+        python -m pytest
