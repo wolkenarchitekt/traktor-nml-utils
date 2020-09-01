@@ -35,6 +35,7 @@ virtualenv-test:
 		pytest
 
 pypi-upload:
+	rm -rf dist
 	. $(VIRTUALENV_DIR)/bin/activate && \
 		python setup.py sdist && \
 		twine upload dist/*
