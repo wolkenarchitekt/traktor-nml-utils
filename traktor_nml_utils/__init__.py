@@ -2,6 +2,7 @@ __version__ = "2.0.6"
 
 from abc import ABC
 from pathlib import Path
+from typing import Union
 
 from traktor_nml_utils.models.collection import Nml as CollectionNml
 from traktor_nml_utils.models.history import Nml as HistoryNml
@@ -20,10 +21,10 @@ def is_history_file(path: Path):
 
 class TraktorNmlMixin(ABC):
     parser = XmlParser()
-
-    def __init__(self, path: Path, model):
+    
+    def __init__(self, path, nml):
         self.path = path
-        self.nml = model
+        self.nml = nml
 
     def save(self):
         with self.path.open(mode="w") as file_obj:
@@ -36,7 +37,16 @@ class TraktorNmlMixin(ABC):
 class TraktorCollection(TraktorNmlMixin):
     def __init__(self, path: Path):
         if is_history_file(path):
-            nml = self.parser.from_path(path, HistoryNml)
-        else:
-            nml = self.parser.from_path(path, CollectionNml)
-        super().__init__(path=path, model=nml)
+            raise ParseError(f"'{path}' is not a valid collection file")
+        self.path = path
+        self.nml: CollectionNml = self.parser.from_path(path, CollectionNml)
+        super().__init__(path=path, nml=self.nml)
+
+
+class TraktorHistory(TraktorNmlMixin):
+    def __init__(self, path: Path):
+        if not is_history_file(path):
+            raise ParseError(f"'{path}' is not a valid history file")
+        self.path = path
+        self.nml: HistoryNml = self.parser.from_path(path, HistoryNml)
+        super().__init__(path=path, nml=self.nml)

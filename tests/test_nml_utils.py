@@ -2,8 +2,9 @@ import os
 from pathlib import Path
 
 import pytest
+from traktor_nml_utils.models.history import Nml as HistoryNml
 
-from traktor_nml_utils import TraktorCollection
+from traktor_nml_utils import TraktorHistory
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -12,5 +13,6 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
     "nml_file", [os.path.join(dir_path, "fixtures", "history.nml")]
 )
 def test_history(nml_file):
-    collection = TraktorCollection(Path(nml_file))
-    assert collection.nml.collection.entry[0]
+    path = Path(nml_file)
+    history = TraktorHistory(path)
+    assert history.nml.playlists.node.subnodes.node.playlist.entry[0].extendeddata.deck == 1
