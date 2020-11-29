@@ -58,9 +58,9 @@ xml-to-xsd:
 	docker run xml2xsd > xml_to_xsd/history.xsd
 
 xsd-to-python:
-	xsdata xml_to_xsd/collection.xsd --package traktor_nml_utils.models
-	xsdata xml_to_xsd/history.xsd --package traktor_nml_utils.models
-	# Remove auto generated imports in init
-	> traktor_nml_utils/models/__init__.py
+	. $(VIRTUALENV_DIR)/bin/activate && \
+	    xsdata xml_to_xsd/collection.xsd --package traktor_nml_utils.models && \
+	    xsdata xml_to_xsd/history.xsd --package traktor_nml_utils.models \
+	        > traktor_nml_utils/models/__init__.py
 
 xml-to-python: xml-to-xsd xsd-to-python
