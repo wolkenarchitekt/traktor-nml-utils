@@ -14,7 +14,7 @@ setup(
     description="Utilities to read and write Traktor NML files",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
-    url="http://github.com/ifischer/traktor-nml-utils",
+    url="http://github.com/wolkenarchitekt/traktor-nml-utils",
     author="Ingo Fischer",
     author_email="mail@ingofischer.de",
     license="GPL",
