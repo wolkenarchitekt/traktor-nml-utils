@@ -22,4 +22,9 @@ setup(
     zip_safe=True,
     python_requires=">=3.7.0",
     install_requires=["xsdata"],
+    entry_points={
+        'console_scripts': [
+            'traktor-nml-utils = traktor_nml_utils.cli:cli',
+        ],
+    },
 )
