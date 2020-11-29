@@ -2,6 +2,7 @@ from os.path import isfile
 from pathlib import Path
 import logging
 import os
+import sys
 
 import click
 from traktor_nml_utils import TraktorCollection
@@ -29,16 +30,20 @@ def cli(verbose, debug):
 
 
 @cli.command()
-@click.option('--nml-file', help="NML file to import")
+@click.argument('nml_file')
 def traktor_import_file(nml_file):
-    TraktorCollection(nml_file)
+    """NML file to import."""
+    if not os.path.exists(nml_file):
+        sys.exit(f"NML file {nml_file} does not exist")
+    TraktorCollection(Path(nml_file))
 
 
 @cli.command()
-@click.option('--nml-dir', help="NML dir to import recursively")
+@click.argument('nml_dir')
 def traktor_import_dir(nml_dir):
+    """NML directory to import."""
     for nml_file in get_nml_files(nml_dir):
-        collection = TraktorCollection(str(nml_file))
+        collection = TraktorCollection(Path(nml_file))
         for entry in collection.entries:
             print(f"{nml_file} {entry.artist} - {entry.title}")
 
