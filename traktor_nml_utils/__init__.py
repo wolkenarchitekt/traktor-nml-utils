@@ -9,6 +9,15 @@ from xsdata.formats.dataclass.parsers import XmlParser
 from xsdata.formats.dataclass.serializers import XmlSerializer
 
 
+class ParseError(Exception):
+    pass
+
+
+def is_history_file(path: Path):
+    content = open(path).read()
+    return "HistoryData" in content
+
+
 class TraktorNmlMixin(ABC):
     parser = XmlParser()
 
@@ -26,11 +35,16 @@ class TraktorNmlMixin(ABC):
 
 class TraktorCollection(TraktorNmlMixin):
     def __init__(self, path: Path):
+        if is_history_file(path):
+            raise ParseError(f"'{path}' is not a collection file.")
+        is_history_file(path)
         nml = self.parser.from_path(path, CollectionNml)
         super(TraktorCollection, self).__init__(path=path, model=nml)
 
 
 class TraktorHistory(TraktorNmlMixin):
     def __init__(self, path: Path):
+        if not is_history_file(path):
+            raise ParseError(f"'{path}' is not a history file.")
         nml = self.parser.from_path(path, HistoryNml)
         super(TraktorHistory, self).__init__(path=path, model=nml)
