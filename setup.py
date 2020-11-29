@@ -10,7 +10,7 @@ def read(fname):
 
 setup(
     name="traktor-nml-utils",
-    version="2.0.7",
+    version="3.0.0",
     description="Utilities to read and write Traktor NML files",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",

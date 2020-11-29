@@ -1,4 +1,4 @@
-__version__ = "2.0.7"
+__version__ = "3.0.0"
 
 from abc import ABC
 from pathlib import Path
