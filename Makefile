@@ -35,6 +35,14 @@ virtualenv-test:
 	. $(VIRTUALENV_DIR)/bin/activate && \
 		pytest tests
 
+virtualenv-test-import-file:
+	. $(VIRTUALENV_DIR)/bin/activate && \
+		traktor-nml-utils traktor-import $(TRAKTOR_DIR)/collection.nml
+
+virtualenv-test-import-dir:
+	. $(VIRTUALENV_DIR)/bin/activate && \
+		traktor-nml-utils traktor-import $(TRAKTOR_DIR)/History
+
 pypi-upload:
 	rm -rf dist
 	. $(VIRTUALENV_DIR)/bin/activate && \
