@@ -2,7 +2,6 @@ __version__ = "2.0.6"
 
 from abc import ABC
 from pathlib import Path
-from typing import Union
 
 from traktor_nml_utils.models.collection import Nml as CollectionNml
 from traktor_nml_utils.models.history import Nml as HistoryNml
@@ -21,7 +20,7 @@ def is_history_file(path: Path):
 
 class TraktorNmlMixin(ABC):
     parser = XmlParser()
-    
+
     def __init__(self, path, nml):
         self.path = path
         self.nml = nml
