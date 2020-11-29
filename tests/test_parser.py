@@ -3,7 +3,7 @@ import os
 import shutil
 from pathlib import Path
 
-from traktor_nml_utils import TraktorCollection, TraktorHistory
+from traktor_nml_utils import TraktorCollection
 
 logger = logging.getLogger(__name__)
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -17,7 +17,7 @@ def test_parse_nml_files(nml_dir: Path):
             TraktorCollection(path=path)
         if path.name.startswith("history"):
             logger.info(f"Parsing history: {path}")
-            TraktorHistory(path=path)
+            TraktorCollection(path=path)
 
 
 def test_parse_collection():

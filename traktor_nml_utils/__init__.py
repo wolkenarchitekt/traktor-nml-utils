@@ -23,7 +23,7 @@ class TraktorNmlMixin(ABC):
 
     def __init__(self, path: Path, model):
         self.path = path
-        self.nml: CollectionNml = model
+        self.nml = model
 
     def save(self):
         with self.path.open(mode="w") as file_obj:
@@ -36,15 +36,7 @@ class TraktorNmlMixin(ABC):
 class TraktorCollection(TraktorNmlMixin):
     def __init__(self, path: Path):
         if is_history_file(path):
-            raise ParseError(f"'{path}' is not a collection file.")
-        is_history_file(path)
-        nml = self.parser.from_path(path, CollectionNml)
-        super(TraktorCollection, self).__init__(path=path, model=nml)
-
-
-class TraktorHistory(TraktorNmlMixin):
-    def __init__(self, path: Path):
-        if not is_history_file(path):
-            raise ParseError(f"'{path}' is not a history file.")
-        nml = self.parser.from_path(path, HistoryNml)
-        super(TraktorHistory, self).__init__(path=path, model=nml)
+            nml = self.parser.from_path(path, HistoryNml)
+        else:
+            nml = self.parser.from_path(path, CollectionNml)
+        super().__init__(path=path, model=nml)
