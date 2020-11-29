@@ -1,5 +1,6 @@
 from shutil import copy2 as copy
 import pytest
+from pathlib import Path
 import os
 
 from traktor_nml_utils import TraktorCollection
@@ -12,7 +13,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 ])
 def test_collection(nml_file):
     nml_file = os.path.join(dir_path, 'fixtures', 'collection.nml')
-    collection = TraktorCollection(os.path.join(dir_path, nml_file))
+    collection = TraktorCollection(Path(os.path.join(dir_path, nml_file)))
     assert collection.entries
     entry = collection.entries[0]
     assert entry.dir == \
@@ -26,7 +27,7 @@ def test_collection(nml_file):
     os.path.join(dir_path, 'fixtures', 'playlist.nml')
 ])
 def test_playlists(nml_file):
-    collection = TraktorCollection(nml_file)
+    collection = TraktorCollection(Path(nml_file))
     assert collection.playlists
     playlist = collection.playlists[0]
     assert playlist.name == 'Preparation'
@@ -38,7 +39,7 @@ def test_playlists(nml_file):
 ])
 def test_update(nml_file, tmpdir):
     nml_file = copy(os.path.join(dir_path, 'fixtures', 'collection.nml'), tmpdir)
-    collection = TraktorCollection(nml_file)
+    collection = TraktorCollection(Path(nml_file))
     entry = collection.entries[0]
     entry.volume = 'blablu'
     entry.save()
@@ -49,7 +50,7 @@ def test_update(nml_file, tmpdir):
     os.path.join(dir_path, 'fixtures', 'cuepoints.nml')
 ])
 def test_cuepoints(nml_file):
-    collection = TraktorCollection(nml_file)
+    collection = TraktorCollection(Path(nml_file))
     entry = collection.entries[0]
     assert len(entry.cuepoints) == 3
     cuepoint = entry.cuepoints[0]
@@ -65,7 +66,7 @@ def test_cuepoints(nml_file):
     os.path.join(dir_path, 'fixtures', 'history.nml')
 ])
 def test_history(nml_file):
-    collection = TraktorCollection(nml_file)
+    collection = TraktorCollection(Path(nml_file))
     assert collection.history
     history_entry = collection.history[0]
     assert history_entry.deck == 1

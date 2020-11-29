@@ -33,7 +33,7 @@ virtualenv-create:
 
 virtualenv-test:
 	. $(VIRTUALENV_DIR)/bin/activate && \
-		pytest
+		pytest tests
 
 pypi-upload:
 	rm -rf dist
