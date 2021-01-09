@@ -5,6 +5,10 @@ clean:
 	rm -rf dist
 	rm -rf $(VIRTUALENV_DIR)
 
+act:
+	docker build -f Dockerfile.act -t ubuntu-builder .
+	act -P ubuntu-latest=ubuntu-builder
+
 docker-build:
 	docker build -t $(CONTAINER) .
 
@@ -72,3 +76,15 @@ xsd-to-python:
 	        > traktor_nml_utils/models/__init__.py
 
 xml-to-python: xml-to-xsd xsd-to-python
+
+bumpversion-patch:
+	. $(VIRTUALENV_DIR)/bin/activate && \
+		bump2version patch
+
+bumpversion-minor:
+	. $(VIRTUALENV_DIR)/bin/activate && \
+		bump2version minor
+
+bumpversion-major:
+	. $(VIRTUALENV_DIR)/bin/activate && \
+		bump2version major
