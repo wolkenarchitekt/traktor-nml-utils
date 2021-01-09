@@ -1,11 +1,8 @@
 import logging
-import os
-import sys
 from pathlib import Path
 
 import click
-
-from traktor_nml_utils import TraktorCollection, is_history_file, TraktorHistory
+from traktor_nml_utils import TraktorCollection, TraktorHistory, is_history_file
 
 logger = logging.getLogger(__name__)
 
@@ -28,7 +25,7 @@ def traktor_import(nml):
     """NML import from file or directory."""
     p = Path(nml)
     if p.is_dir():
-        nml_files = p.glob('**/*.nml')
+        nml_files = p.glob("**/*.nml")
     else:
         nml_files = [p]
 
@@ -42,4 +39,3 @@ def traktor_import(nml):
 
 if __name__ == "__main__":
     cli()
-
