@@ -251,6 +251,7 @@
       <xs:element type="COLLECTIONType" name="COLLECTION"/>
       <xs:element type="SETSType" name="SETS"/>
       <xs:element type="PLAYLISTSType" name="PLAYLISTS"/>
+      <xs:element type="xs:string" name="INDEXING"/>
       <xs:element type="SORTING_ORDERType" name="SORTING_ORDER" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
     <xs:attribute type="xs:byte" name="VERSION"/>

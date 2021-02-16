@@ -1263,6 +1263,7 @@ class Nmltype:
     :ivar collection:
     :ivar sets:
     :ivar playlists:
+    :ivar indexing:
     :ivar sorting_order:
     :ivar version:
     """
@@ -1305,6 +1306,14 @@ class Nmltype:
         default=None,
         metadata=dict(
             name="PLAYLISTS",
+            type="Element",
+            required=True
+        )
+    )
+    indexing: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="INDEXING",
             type="Element",
             required=True
         )
