@@ -27,7 +27,7 @@ class TraktorNmlMixin(ABC):
 
     def save(self):
         with self.path.open(mode="w") as file_obj:
-            serialized = XmlSerializer(pretty_print=True).render(self.nml)
+            serialized = XmlSerializer().render(self.nml)
             serialized = serialized.split("\n")
             serialized = "\n".join(line.lstrip() for line in serialized)
             file_obj.write(serialized)
