@@ -39,6 +39,11 @@ virtualenv-test:
 	. $(VIRTUALENV_DIR)/bin/activate && \
 		pytest tests
 
+virtualenv-lint:
+	. $(VIRTUALENV_DIR)/bin/activate && flake8 traktor_nml_utils
+	. $(VIRTUALENV_DIR)/bin/activate && mypy traktor_nml_utils
+	. $(VIRTUALENV_DIR)/bin/activate && black --check --exclude traktor_nml_utils/models/ traktor_nml_utils tests/
+
 virtualenv-test-import-file:
 	. $(VIRTUALENV_DIR)/bin/activate && \
 		traktor-nml-utils traktor-import $(TRAKTOR_DIR)/collection.nml
