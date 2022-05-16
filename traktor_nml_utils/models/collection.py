@@ -784,6 +784,7 @@ class Entrytype:
     :ivar audio_id:
     :ivar title:
     :ivar artist:
+    :ivar cell:
     """
     class Meta:
         name = "ENTRYType"
@@ -914,6 +915,15 @@ class Entrytype:
         metadata=dict(
             name="ARTIST",
             type="Attribute"
+        )
+    )
+    cell: List[Celltype] = field(
+        default_factory=list,
+        metadata=dict(
+            name="CELL",
+            type="Element",
+            min_occurs=0,
+            max_occurs=9223372036854775807
         )
     )
 
