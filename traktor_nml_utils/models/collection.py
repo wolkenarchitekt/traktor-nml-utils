@@ -319,6 +319,7 @@ class Infotype:
     :ivar rating:
     :ivar producer:
     :ivar mix:
+    :ivar color:
     """
     class Meta:
         name = "INFOType"
@@ -470,6 +471,13 @@ class Infotype:
         default=None,
         metadata=dict(
             name="MIX",
+            type="Attribute"
+        )
+    )
+    color: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="COLOR",
             type="Attribute"
         )
     )

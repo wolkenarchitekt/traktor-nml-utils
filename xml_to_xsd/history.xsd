@@ -47,6 +47,7 @@
         <xs:attribute type="xs:string" name="LAST_PLAYED" use="optional"/>
         <xs:attribute type="xs:byte" name="FLAGS" use="optional"/>
         <xs:attribute type="xs:short" name="FILESIZE" use="optional"/>
+        <xs:attribute type="xs:byte" name="COLOR" use="optional"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
