@@ -220,6 +220,7 @@ class Infotype:
     :ivar key_lyrics:
     :ivar remixer:
     :ivar producer:
+    :ivar color:
     """
     class Meta:
         name = "INFOType"
@@ -350,6 +351,13 @@ class Infotype:
         default=None,
         metadata=dict(
             name="PRODUCER",
+            type="Attribute"
+        )
+    )
+    color: Optional[int] = field(
+        default=None,
+        metadata=dict(
+            name="COLOR",
             type="Attribute"
         )
     )
