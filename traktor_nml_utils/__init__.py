@@ -14,7 +14,7 @@ class ParseError(Exception):
 
 
 def is_history_file(path: Path):
-    content = open(path).read()
+    content = open(path, encoding="utf8").read()
     return "HistoryData" in content
 
 
@@ -26,7 +26,7 @@ class TraktorNmlMixin(ABC):
         self.nml = nml
 
     def save(self):
-        with self.path.open(mode="w") as file_obj:
+        with self.path.open(mode="w", encoding="utf8") as file_obj:
             serialized = XmlSerializer().render(self.nml)
             serialized = serialized.split("\n")
             serialized = "\n".join(line.lstrip() for line in serialized)
