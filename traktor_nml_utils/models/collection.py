@@ -207,6 +207,8 @@ class CueV2Type:
     :ivar len:
     :ivar repeats:
     :ivar hotcue:
+    :ivar grid:
+    :ivar color:
     """
     class Meta:
         name = "CUE_V2Type"
@@ -260,6 +262,41 @@ class CueV2Type:
         default=None,
         metadata=dict(
             name="HOTCUE",
+            type="Attribute"
+        )
+    )
+    color: Optional[str] = field(
+        default=None,
+        metadata=dict(
+            name="COLOR",
+            type="Attribute"
+        )
+    )
+    grid: Optional["GridType"] = field(
+        default=None,
+        metadata=dict(
+            name="GRID",
+            type="Element"
+        )
+    )
+
+
+@dataclass
+class GridType:
+    """
+    :ivar value:
+    :ivar bpm:
+    """
+    class Meta:
+        name = "GRIDType"
+
+    value: Optional[str] = field(
+        default=None,
+    )
+    bpm: Optional[float] = field(
+        default=None,
+        metadata=dict(
+            name="BPM",
             type="Attribute"
         )
     )
