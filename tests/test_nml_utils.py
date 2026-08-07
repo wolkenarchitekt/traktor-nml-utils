@@ -46,7 +46,7 @@ def test_collection_with_smartlists():
     assert len(collection.nml.collection.entry) == 1
 
     nodes = collection.nml.playlists.node.subnodes.node
-    smartlist_node = [node for node in nodes if node.type == "SMARTLIST"][0]
+    smartlist_node = next(node for node in nodes if node.type == "SMARTLIST")
     assert smartlist_node.name == "Instrumentals"
     assert smartlist_node.smartplaylist.uuid == "5566f26cd8414288a8ea378d0cc5ac55"
     assert (

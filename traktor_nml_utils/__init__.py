@@ -31,7 +31,7 @@ class ParseError(Exception):
 
 
 def is_history_file(path: Path):
-    content = open(path, encoding="utf8").read()
+    content = path.read_text(encoding="utf8")
     return "HistoryData" in content
 
 

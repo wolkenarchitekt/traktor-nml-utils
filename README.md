@@ -38,7 +38,7 @@ pip install traktor-nml-utils
 from traktor_nml_utils import TraktorCollection
 from pathlib import Path
 
-collection = TraktorCollection(path=Path('collection.nml'))
+collection = TraktorCollection(path=Path("collection.nml"))
 
 for entry in collection.nml.collection.entry:
     print(entry.artist, entry.title, entry.info.ranking)
@@ -60,9 +60,9 @@ artist = "Yotto"
 title = "Another Riff For The Good Times (Extended Mix)"
 
 entry = [
-    entry for entry in collection.nml.collection.entry
-    if entry.artist == artist
-    and entry.title == title
+    entry
+    for entry in collection.nml.collection.entry
+    if entry.artist == artist and entry.title == title
 ][0]
 ```
 
@@ -73,14 +73,14 @@ from traktor_nml_utils.models.collection import CueV2Type
 from traktor_nml_utils.utils import duration_str_to_milliseconds
 
 my_cue = CueV2Type(
-    value=None, 
-    name='n.n.', 
-    displ_order=0, 
-    type=0, 
-    start=duration_str_to_milliseconds("00:01:00"), 
-    len=0.0, 
-    repeats=-1, 
-    hotcue=1
+    value=None,
+    name="n.n.",
+    displ_order=0,
+    type=0,
+    start=duration_str_to_milliseconds("00:01:00"),
+    len=0.0,
+    repeats=-1,
+    hotcue=1,
 )
 entry.cue_v2.append(my_cue)
 
