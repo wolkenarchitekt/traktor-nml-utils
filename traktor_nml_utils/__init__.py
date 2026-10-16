@@ -81,9 +81,9 @@ def format_traktor_layout(serialized: str) -> str:
     Traktor writes empty elements with explicit closing tags (``<X></X>``,
     never ``<X/>``) and puts exactly one newline after every closing tag.
     xsdata self-closes empty elements and emits the document on a single line,
-    so we restore both. Angle brackets inside attribute values are always
-    escaped (``&lt;`` / ``&gt;``), so these tag-based substitutions never touch
-    attribute data.
+    so we restore both. The tag-based substitutions run while xsdata still
+    escapes angle brackets inside attribute values (``&lt;`` / ``&gt;``), so
+    they never touch attribute data; ``>`` is unescaped only afterwards.
     """
     # Drop xsdata's declaration and collapse any whitespace between tags.
     serialized = re.sub(r"^\s*<\?xml[^>]*\?>", "", serialized)
@@ -91,20 +91,35 @@ def format_traktor_layout(serialized: str) -> str:
 
     # Traktor always double-quotes attributes, writing quotes inside values as
     # "&quot;" (e.g. the STEMS JSON). xsdata's sax-based writer switches to
-    # single quotes for such values, so convert them back.
+    # single quotes for such values, so convert them back. Attributes are read
+    # in order from the start of each tag, so a double-quoted value that merely
+    # contains name='x' (a comment, a smartlist query) is skipped whole rather
+    # than rewritten into a bare '"' inside its own quotes.
     def _double_quote_attr(match: "re.Match") -> str:
-        value = match.group(2).replace('"', "&quot;")
-        return f'{match.group(1)}"{value}"'
+        value = match.group(2)
+        if value.startswith("'"):
+            value = '"' + value[1:-1].replace('"', "&quot;") + '"'
+        return match.group(1) + value
 
-    serialized = re.sub(r"(\s[A-Za-z0-9_]+=)'([^']*)'", _double_quote_attr, serialized)
+    def _double_quote_tag(match: "re.Match") -> str:
+        tag = match.group(0)
+        if "'" not in tag:
+            return tag
+        return re.sub(r"""(\s[A-Za-z0-9_]+=)("[^"]*"|'[^']*')""", _double_quote_attr, tag)
+
+    # "<" and ">" are still escaped inside values here, so a tag is <...>.
+    serialized = re.sub(r"<[A-Za-z0-9_][^<>]*>", _double_quote_tag, serialized)
+    # Expand self-closing empty elements: <X .../> -> <X ...></X>. This must
+    # run before ">" is unescaped below: the attribute pattern cannot cross a
+    # raw ">", so an element like QUERY="$IMPORTDATE >= MONTHS_AGO(1)" would
+    # otherwise stay self-closed.
+    serialized = re.sub(
+        r"<([A-Za-z0-9_]+)((?:\s[^<>]*)?)/>", r"<\1\2></\1>", serialized
+    )
     # Traktor leaves ">" unescaped inside values (only "<", "&" and '"' are
     # escaped); xsdata escapes ">" as "&gt;", so undo that. Raw ">" is valid
     # XML in both attribute values and text, so this stays well-formed.
     serialized = serialized.replace("&gt;", ">")
-    # Expand self-closing empty elements: <X .../> -> <X ...></X>
-    serialized = re.sub(
-        r"<([A-Za-z0-9_]+)((?:\s[^<>]*)?)/>", r"<\1\2></\1>", serialized
-    )
     # One newline after every closing tag (leaves parent/first-child inline).
     serialized = re.sub(r"(</[A-Za-z0-9_]+>)", r"\1\n", serialized)
     return f"{TRAKTOR_XML_DECLARATION}\n{serialized}"

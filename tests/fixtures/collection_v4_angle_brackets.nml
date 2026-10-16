@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<NML VERSION="20"><HEAD COMPANY="www.native-instruments.com" PROGRAM="Traktor Pro 4"></HEAD>
+<COLLECTION ENTRIES="5"><ENTRY MODIFIED_DATE="2025/11/29" MODIFIED_TIME="82142" AUDIO_ID="AN4SIiIiMiMiMiM3UzRDRDNERDRERDMyIyERJWVWRGd3VHd3ZGd3iImYmImImKqqqseKiv///////////////////////////////s//////////////////////////////yZvv///////////////////////////////+z/////////////////////////////+ois///////////////////////////////97f/////////////////////////KmanHer3///////////////////////////////qL/////////////////////////1IRIjNGhSEREREQ==" TITLE="Rude Boi Style" ARTIST="T>I, Kontakt, Mad Sam"><LOCATION DIR="/:Music Library/:STEMS/:Rudeboy Filth/:" FILE="Rude Boi Style - T I, Kontakt, Mad Sam.stem.m4a" VOLUME="X:" VOLUMEID="68d949fd"></LOCATION>
+<ALBUM TITLE="Rude Boi Style"></ALBUM>
+<MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
+<INFO BITRATE="131816" COVERARTID="043/LRZC2DBFNJQTJCVV1VRPA01TMCLD" PLAYCOUNT="1" PLAYTIME="223" PLAYTIME_FLOAT="222.169113" IMPORT_DATE="2025/11/29" LAST_PLAYED="2025/11/29" FLAGS="12" FILESIZE="18633"></INFO>
+<TEMPO BPM="88.000496" BPM_QUALITY="100.000000"></TEMPO>
+<LOUDNESS PEAK_DB="-2.809705" PERCEIVED_DB="-1.554375" ANALYZED_DB="-1.554375"></LOUDNESS>
+<MUSICAL_KEY VALUE="17"></MUSICAL_KEY>
+<CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="1740.871094" LEN="0.000000" REPEATS="-1" HOTCUE="-1"><GRID BPM="88.000496"></GRID>
+</CUE_V2>
+<CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="0" START="1740.871094" LEN="0.000000" REPEATS="-1" HOTCUE="0" COLOR="#FFFFFF"></CUE_V2>
+<STEMS STEMS="{&quot;mastering_dsp&quot;:{&quot;compressor&quot;:{&quot;attack&quot;:0.01999999955296516,&quot;dry_wet&quot;:50,&quot;enabled&quot;:false,&quot;hp_cutoff&quot;:50,&quot;input_gain&quot;:0,&quot;output_gain&quot;:0,&quot;ratio&quot;:4,&quot;release&quot;:0.1400000005960464,&quot;threshold&quot;:0},&quot;limiter&quot;:{&quot;ceiling&quot;:0,&quot;enabled&quot;:false,&quot;release&quot;:0.05000000074505806,&quot;threshold&quot;:0}},&quot;stems&quot;:[{&quot;color&quot;:&quot;#FD4A4A&quot;,&quot;name&quot;:&quot;Drums&quot;},{&quot;color&quot;:&quot;#FFFF00&quot;,&quot;name&quot;:&quot;Bass&quot;},{&quot;color&quot;:&quot;#00E8E8&quot;,&quot;name&quot;:&quot;Synths&quot;},{&quot;color&quot;:&quot;#AD65FF&quot;,&quot;name&quot;:&quot;Vox&quot;}],&quot;version&quot;:1}"></STEMS>
+</ENTRY>
+<ENTRY MODIFIED_DATE="2022/10/3" MODIFIED_TIME="54084" LOCK="1" LOCK_MODIFICATION_TIME="2022-10-03T15:01:21" AUDIO_ID="AAYAAAAAAAAAAzEAAAAAAAAB79qGVDIiIzNXVDMj3JZDM3mGVDXblkMk7rh1QzIjMzR3VDIm7IZENIl2VDjbhUMk/v/9uod3VEaHVVRERDMzN7uphmVVQzI2ZmVUR6dkQzfv762al2QyOO/uramGVDJK7bmGVUMzIiIiIiIhERERb9/LdoZVhXqVWv+0NmmHVGRX7/6nqpZ1dVeGU1eGmriIZ2V3Y0VFZ1RUQlREREQ0M1RUVFRFRVZFRDQzM0NUVENERVVERDRFVkQzRFRUM0VEMyMzNEQzNDMjIiMzMzMzRDQ1Q0NTU0VVRUREMzMjNERERFVWVWVVVmZVRERERA==" TITLE="Break Down"><LOCATION DIR="/:Traktor/:TraktorContent/:Samples/:" FILE="Break Down > Build Up.wav" VOLUME="X:" VOLUMEID="68d949fd"></LOCATION>
+<MODIFICATION_INFO AUTHOR_TYPE="application"></MODIFICATION_INFO>
+<INFO BITRATE="1536000" PLAYTIME="6" PLAYTIME_FLOAT="5.517229" IMPORT_DATE="2022/10/3" FLAGS="28" FILESIZE="1036"></INFO>
+<TEMPO BPM="173.999771" BPM_QUALITY="100.000000"></TEMPO>
+<LOUDNESS PEAK_DB="0.000265" PERCEIVED_DB="1.550903" ANALYZED_DB="1.550903"></LOUDNESS>
+<MUSICAL_KEY VALUE="18"></MUSICAL_KEY>
+<LOOPINFO ORIGINAL_TITLE="Loop Recorder" ORIGINAL_LOOP_SIZE="15.999944" ORIGINAL_LOOP_START="0.000000" SAMPLE_TYPE_INFO="0"></LOOPINFO>
+<CUE_V2 NAME="Unnamed" DISPL_ORDER="0" TYPE="4" START="0.000000" LEN="0.000000" REPEATS="-1" HOTCUE="-1"><GRID BPM="173.999771"></GRID>
+</CUE_V2>
+<CUE_V2 NAME="Unnamed" DISPL_ORDER="0" TYPE="0" START="0.000000" LEN="0.000000" REPEATS="-1" HOTCUE="0" COLOR="#FFFFFF"></CUE_V2>
+</ENTRY>
+<ENTRY MODIFIED_DATE="2023/2/4" MODIFIED_TIME="11912" AUDIO_ID="AY6e/u7v7u7+7u7u7u7u7u7+7uURIt///////////////////////////////////////+7/////7v//////////////////////////////////////////////////////////3f/////d3M7t7d2YiZma3Ih3d3dVRDMzM0MzMzM0VGZmRGeHZmZ5nv///////////////////////////////////////u7////+7//////////////////93/////3f/////////////////////////d////////////////////////+SIiIiIiIiIhIiIREREREAAAAAAA==" TITLE="Parfume (Dosem Remix)" ARTIST="Eli &amp; Fur"><LOCATION DIR="/:Music Library/:Beatport/:2018/:Top 100 Deep House (Nov 2018)/:" FILE="05. Parfume (Dosem Remix).mp3" VOLUME="X:" VOLUMEID="68d949fd"></LOCATION>
+<ALBUM TRACK="5" TITLE="Disc 5: Beatport Top 100 Deep House (28th Dec 2K19)"></ALBUM>
+<MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
+<INFO BITRATE="128504" GENRE="Deep House" COVERARTID="082/S0TINGBHLDCPSATDAA2EAH4YISNC" KEY="10m" PLAYTIME="399" PLAYTIME_FLOAT="398.046082" IMPORT_DATE="2023/2/2" RELEASE_DATE="2018/1/1" FLAGS="12"></INFO>
+<TEMPO BPM="123.000183" BPM_QUALITY="100.000000"></TEMPO>
+<LOUDNESS PEAK_DB="-1.812607" PERCEIVED_DB="1.745270" ANALYZED_DB="1.745270"></LOUDNESS>
+<MUSICAL_KEY VALUE="12"></MUSICAL_KEY>
+<CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="16.238600" LEN="0.000000" REPEATS="-1" HOTCUE="-1"><GRID BPM="123.000183"></GRID>
+</CUE_V2>
+<CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="0" START="16.238600" LEN="0.000000" REPEATS="-1" HOTCUE="0" COLOR="#FFFFFF"></CUE_V2>
+<STEMS STEMS="{&quot;mastering_dsp&quot;:{&quot;compressor&quot;:{&quot;attack&quot;:0.01999999955296516,&quot;dry_wet&quot;:50,&quot;enabled&quot;:false,&quot;hp_cutoff&quot;:50,&quot;input_gain&quot;:0,&quot;output_gain&quot;:0,&quot;ratio&quot;:4,&quot;release&quot;:0.1400000005960464,&quot;threshold&quot;:0},&quot;limiter&quot;:{&quot;ceiling&quot;:0,&quot;enabled&quot;:false,&quot;release&quot;:0.05000000074505806,&quot;threshold&quot;:0}},&quot;stems&quot;:[{&quot;color&quot;:&quot;#FD4A4A&quot;,&quot;name&quot;:&quot;Drums&quot;},{&quot;color&quot;:&quot;#FFFF00&quot;,&quot;name&quot;:&quot;Bass&quot;},{&quot;color&quot;:&quot;#00E8E8&quot;,&quot;name&quot;:&quot;Synths&quot;},{&quot;color&quot;:&quot;#AD65FF&quot;,&quot;name&quot;:&quot;Vox&quot;}],&quot;version&quot;:1}"></STEMS>
+</ENTRY>
+<ENTRY MODIFIED_DATE="2021/1/17" MODIFIED_TIME="51232" AUDIO_ID="ASNN3u7u7e7t3e7u7u7u3u7t3u7u3d7u7e7u3u027d7u7u7u6DMzQzQ0RFYzMyIjM0M1VEQ0M0Q1mVmZiFSGOJdpiqlGtlWrytvMvJyIusq73c+2nKe8zNvftq2Hy9zc3Kjf///////////////9i+//////////////////7ez+/+7Pu9393v/vxo7b7u////vfyuztzeyX7////////////////av+p2Z4dlVXl2eImmV1Rc///////////////+zP////////////////yc////////////////tlj///////////////9USe7u7u7u7u7u7u7u6SJHUhEAAAAA==" TITLE="OK (Extended Version)" ARTIST="Robin Schulz f./James Blunt"><LOCATION DIR="/:Music Library/:Beatport/:2017/:Top 100 Dance (June 2017)/:" FILE="020. James Blunt, Robin Schulz - OK (feat. James Blunt) (Extended Version).mp3" VOLUME="X:" VOLUMEID="68d949fd"></LOCATION>
+<MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
+<INFO BITRATE="320000" GENRE="Dance" LABEL="Atlantic" COMMENT="Classic > Move" COVERARTID="091/1W1KUOATLVL25CCPG4CFAIY221SD" KEY="11m" PLAYCOUNT="1" PLAYTIME="290" RANKING="0" IMPORT_DATE="2018/10/9" LAST_PLAYED="2024/4/27" FLAGS="14" FILESIZE="11399"></INFO>
+<TEMPO BPM="121.999924" BPM_QUALITY="100.000000"></TEMPO>
+<LOUDNESS PEAK_DB="-0.779787" PERCEIVED_DB="-0.635994" ANALYZED_DB="-0.635994"></LOUDNESS>
+<MUSICAL_KEY VALUE="19"></MUSICAL_KEY>
+<CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="240.127817" LEN="0.000000" REPEATS="-1" HOTCUE="-1"><GRID BPM="121.999924"></GRID>
+</CUE_V2>
+<CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="0" START="240.127817" LEN="0.000000" REPEATS="-1" HOTCUE="0" COLOR="#FFFFFF"></CUE_V2>
+<CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="0" START="8088.700000" LEN="0.000000" REPEATS="-1" HOTCUE="1"></CUE_V2>
+<CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="0" START="28272.914885" LEN="0.000000" REPEATS="-1" HOTCUE="5"></CUE_V2>
+<CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="0" START="62239.300000" LEN="0.000000" REPEATS="-1" HOTCUE="2"></CUE_V2>
+<CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="0" START="108959.000000" LEN="0.000000" REPEATS="-1" HOTCUE="3"></CUE_V2>
+</ENTRY>
+<ENTRY MODIFIED_DATE="2024/1/13" MODIFIED_TIME="73546" AUDIO_ID="ARN9rrqp2ayZnrvqqbudqZvq3svOrOu56q/Lvbnsu/yJmJiWeZqVV5mImZiq3+iqiImIiaqqmZmYh3ZV3/////////////////+u//////////////////nf///////////////+/Lvq38y+zOmZ3K7MzevdzP6ZmZmnepqmV5iYmZirz/m8mZypyYndvpiZqKma/9zKq6maiJqZmYiIdmZ8/////////////////////////////////////8z/////////////////+7////////////////793/3v3d/s/Mzv3/3d/O/Mz9793O7PzM79/tzPzvzMUyERAAAAAA==" TITLE="Real Love (feat. Danyka Nadeau)" ARTIST="Rootkit"><LOCATION DIR="/:Music Library/:EDM/:" FILE="Rootkit - Real Love (feat. Danyka Nadeau) - 01 Real Love (feat. Danyka Nadeau).mp3" VOLUME="X:" VOLUMEID="68d949fd"></LOCATION>
+<ALBUM TRACK="1" TITLE="Real Love (feat. Danyka Nadeau)"></ALBUM>
+<MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
+<INFO BITRATE="195200" GENRE="House" COVERARTID="102/GDQTW4B1RNLYSASYKFFEDBM13EMD" KEY="10m" PLAYCOUNT="2" PLAYTIME="276" PLAYTIME_FLOAT="275.461212" IMPORT_DATE="2018/7/8" LAST_PLAYED="2025/6/30" FLAGS="78" FILESIZE="6659"></INFO>
+<TEMPO BPM="122.000671" BPM_QUALITY="100.000000"></TEMPO>
+<LOUDNESS PEAK_DB="-1.442495" PERCEIVED_DB="-0.190605" ANALYZED_DB="-0.190605"></LOUDNESS>
+<MUSICAL_KEY VALUE="12"></MUSICAL_KEY>
+<CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="29.684317" LEN="0.000000" REPEATS="-1" HOTCUE="-1"><GRID BPM="122.000671"></GRID>
+</CUE_V2>
+<CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="0" START="29.684317" LEN="0.000000" REPEATS="-1" HOTCUE="0" COLOR="#FFFFFF"></CUE_V2>
+</ENTRY>
+</COLLECTION>
+<SETS ENTRIES="0"></SETS>
+<PLAYLISTS><NODE TYPE="FOLDER" NAME="$ROOT"><SUBNODES COUNT="4"><NODE TYPE="SMARTLIST" NAME="Recently added"><SMARTLIST UUID="14adca37e63f4b7f8537aaf4522b4214"><SEARCH_EXPRESSION VERSION="1" QUERY="$IMPORTDATE >= MONTHS_AGO(1)"></SEARCH_EXPRESSION>
+</SMARTLIST>
+</NODE>
+<NODE TYPE="SMARTLIST" NAME="Low rated"><SMARTLIST UUID="5bf0e4c7a7ac4683a4b135aa1990f707"><SEARCH_EXPRESSION VERSION="1" QUERY="$RATING &lt; 3"></SEARCH_EXPRESSION>
+</SMARTLIST>
+</NODE>
+<NODE TYPE="SMARTLIST" NAME="Top rated tracks"><SMARTLIST UUID="2715f7b7688d449f9981c0eb1bdf6abb"><SEARCH_EXPRESSION VERSION="1" QUERY="$RATING == 5"></SEARCH_EXPRESSION>
+</SMARTLIST>
+</NODE>
+<NODE TYPE="PLAYLIST" NAME="Warm-up > Peak"><PLAYLIST ENTRIES="0" TYPE="LIST" UUID="3f62a258c834453e8e82015cd0cbd657"></PLAYLIST>
+</NODE>
+</SUBNODES>
+</NODE>
+</PLAYLISTS>
+<INDEXING><SORTING_INFO PATH="$COLLECTION"></SORTING_INFO>
+</INDEXING>
+</NML>
