@@ -2,7 +2,7 @@ import os
 import shutil
 from pathlib import Path
 
-from traktor_nml_utils import TraktorCollection, TraktorHistory
+from traktor_nml_utils import TraktorCollection, TraktorHistory, format_traktor_layout
 from traktor_nml_utils.models.collection import (
     CueV2Type,
     Entrytype,
@@ -246,3 +246,38 @@ def test_collection_v4_byte_exact_roundtrip(tmp_path):
     original = src.read_text(encoding="utf8")
     TraktorCollection(work).save()
     assert work.read_text(encoding="utf8") == original
+
+
+def test_collection_v4_angle_bracket_attributes_roundtrip(tmp_path):
+    """Empty elements with ">" in an attribute keep their explicit close tag.
+
+    Traktor leaves ">" unescaped, so the self-closing expansion must run before
+    "&gt;" is unescaped: Traktor 4.5's default "Recently added" smartlist
+    (QUERY="$IMPORTDATE >= MONTHS_AGO(1)") came back as "<SEARCH_EXPRESSION .../>",
+    as did a LOCATION file name or INFO comment containing ">".
+    """
+    src = Path(os.path.join(dir_path, "fixtures", "collection_v4_angle_brackets.nml"))
+    work = tmp_path / src.name
+    shutil.copy(src=src, dst=work)
+
+    original = src.read_text(encoding="utf8")
+    TraktorCollection(work).save()
+    saved = work.read_text(encoding="utf8")
+    assert "/>" not in saved
+    assert saved == original
+
+
+def test_format_traktor_layout_quotes():
+    """xsdata's single-quoted values become double-quoted; nothing else does."""
+    def fmt(s):
+        return format_traktor_layout(s).split("\n", 1)[1].rstrip("\n")
+
+    # A value containing '"' (the STEMS JSON) is single-quoted by xsdata.
+    assert fmt("<STEMS STEMS='{\"a\":1}'/>") == '<STEMS STEMS="{&quot;a&quot;:1}"></STEMS>'
+    # A double-quoted value that merely contains name='x' is left alone.
+    assert fmt("<INFO COMMENT=\"mix key='8A' done\"/>") == "<INFO COMMENT=\"mix key='8A' done\"></INFO>"
+    assert fmt("<INFO TITLE=\"Rock 'n' Roll\" COMMENT='say \"hi\"'/>") == (
+        "<INFO TITLE=\"Rock 'n' Roll\" COMMENT=\"say &quot;hi&quot;\"></INFO>"
+    )
+    # ">" is unescaped, but only after the tag has been expanded.
+    assert fmt('<INFO COMMENT="a &gt; b"/>') == '<INFO COMMENT="a > b"></INFO>'
